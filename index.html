@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naraya Leather - Premium Handmade Wallet</title>
+    <style>
+        :root {
+            --color-primary: #1a1a1a;
+            --color-secondary: #d4af37;
+            --color-accent: #f5f5f5;
+            --color-light: #ffffff;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #27ae60;
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            --radius: 8px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-light);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--color-primary);
+            cursor: pointer;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 14px;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-secondary);
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-light);
+            padding: 10px 24px;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            border: 1px solid var(--color-border);
+            padding: 10px 24px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-secondary);
+            background: #fafafa;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: var(--color-light);
+            padding: var(--spacing-xl) var(--spacing-md);
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: var(--spacing-md);
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: var(--spacing-lg);
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: flex-start;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Section */
+        section {
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            position: relative;
+            padding-bottom: var(--spacing-md);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--color-secondary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-text-light);
+            font-size: 16px;
+            margin-bottom: var(--spacing-xl);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        #about {
+            background: #fafafa;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            margin-top: var(--spacing-xl);
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .about-content h3 {
+            font-size: 24px;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-primary);
+        }
+
+        .about-content p {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        .value-list {
+            list-style: none;
+            margin-top: var(--spacing-lg);
+        }
+
+        .value-list li {
+            padding: var(--spacing-sm) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
+            color: var(--color-text-light);
+        }
+
+        .value-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-secondary);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Products Section */
+        #products {
+            background: var(--color-light);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .product-card {
+            background: var(--color-light);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+            border-color: var(--color-secondary);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            font-size: 14px;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: var(--spacing-md);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-primary);
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+            flex: 1;
+        }
+
+        .product-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .product-specs {
+            font-size: 12px;
+            color: var(--color-text-light);
+            background: #f9f9f9;
+            padding: var(--spacing-sm);
+            border-radius: 4px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* USP Section */
+        #usp {
+            background: var(--color-primary);
+            color: var(--color-light);
+        }
+
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .usp-card {
+            background: rgba(255,255,255,0.08);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .usp-card:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: var(--color-secondary);
+        }
+
+        .usp-icon {
+            font-size: 32px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .usp-card h4 {
+            font-size: 16px;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+        .usp-card p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: var(--color-accent);
+            border-radius: var(--radius);
+            border: 1px solid var(--color-border);
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--color-text-light);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--color-accent);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .contact-info h3 {
+            font-size: 20px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-item {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-item label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-primary);
+        }
+
+        .contact-item a, .contact-item p {
+            color: var(--color-text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-secondary);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: var(--spacing-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            color: var(--color-light);
+            padding: var(--spacing-lg) var(--spacing-md);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin: var(--spacing-md) 0;
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+        }
+
+        .social-links a {
+            color: var(--color-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--color-primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: var(--color-light);
+            border-top: 1px solid var(--color-border);
+            z-index: 99;
+            max-height: calc(100vh - 60px);
+            overflow-y: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--color-border);
+            text-decoration: none;
+            color: var(--color-text);
+            transition: background 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            background: #f5f5f5;
+            color: var(--color-secondary);
+        }
+
+        .mobile-menu .btn-primary {
+            margin: var(--spacing-md);
+            width: calc(100% - 2 * var(--spacing-md));
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-logo {
+                gap: var(--spacing-xs);
+            }
+
+            .nav-logo img {
+                height: 32px;
+            }
+
+            .nav-logo span {
+                font-size: 13px;
+            }
+
+            .hero-container,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons button {
+                width: 100%;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 240px;
+            }
+
+            .usp-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-card {
+                padding: var(--spacing-md);
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .section-container {
+                padding: 0 var(--spacing-md);
+            }
+
+            section {
+                padding: var(--spacing-lg) var(--spacing-sm);
+            }
+
+            .hero {
+                padding: var(--spacing-lg) var(--spacing-sm);
+            }
+
+            .about-content h3 {
+                font-size: 20px;
+                margin-top: var(--spacing-lg);
+            }
+
+            .contact-form {
+                width: 100%;
+            }
+
+            .value-list li {
+                font-size: 14px;
+            }
+
+            section[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: var(--spacing-sm);
+            }
+
+            .nav-logo {
+                font-size: 14px;
+            }
+
+            .hero-content h1 {
+                font-size: 24px;
+            }
+
+            .hero-content p {
+                font-size: 14px;
+                margin-bottom: var(--spacing-md);
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .section-subtitle {
+                font-size: 14px;
+            }
+
+            .product-card {
+                border-radius: 0;
+            }
+
+            .usp-card {
+                padding: var(--spacing-md);
+            }
+
+            .usp-icon {
+                font-size: 28px;
+            }
+
+            .usp-card h4 {
+                font-size: 14px;
+            }
+
+            .usp-card p {
+                font-size: 12px;
+            }
+
+            .contact-item label {
+                font-size: 14px;
+            }
+
+            .contact-item a,
+            .contact-item p {
+                font-size: 13px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: var(--spacing-sm);
+                font-size: 14px;
+            }
+
+            footer p {
+                font-size: 12px;
+            }
+
+            .social-links {
+                gap: var(--spacing-md);
+                font-size: 12px;
+            }
+
+            .hero-buttons {
+                gap: var(--spacing-sm);
+            }
+
+            .hero-buttons button {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+
+            .stat-card {
+                padding: var(--spacing-md);
+            }
+
+            .stat-number {
+                font-size: 24px;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/8fcc021d-5544-4ff5-86ca-6deaebfcde41" alt="Naraya Leather Logo" style="height: 45px; width: auto; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08)); image-rendering: -webkit-optimize-contrast;">
+                <span style="font-weight: 700; color: var(--color-primary); letter-spacing: -0.3px; font-size: 16px; font-family: 'Georgia', 'Garamond', serif; text-transform: capitalize;">Naraya Leather</span>
+            </div>
+            <button class="mobile-menu-toggle" id="menuToggle">☰</button>
+            <div class="nav-menu">
+                <a onclick="scrollToSection('about')">Tentang</a>
+                <a onclick="scrollToSection('products')">Produk</a>
+                <a onclick="scrollToSection('usp')">Keunggulan</a>
+                <a onclick="scrollToSection('contact')">Hubungi</a>
+                <button class="btn-primary">Pesan Sekarang</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a onclick="scrollToSection('about'); toggleMobileMenu()">Tentang</a>
+        <a onclick="scrollToSection('products'); toggleMobileMenu()">Produk</a>
+        <a onclick="scrollToSection('usp'); toggleMobileMenu()">Keunggulan</a>
+        <a onclick="scrollToSection('contact'); toggleMobileMenu()">Hubungi</a>
+        <button class="btn-primary" style="margin: var(--spacing-md); width: calc(100% - 2 * var(--spacing-md));" onclick="toggleMobileMenu()">Pesan Sekarang</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Premium Dompet Kulit Handmade</h1>
+                <p>Desain minimalis & fungsional dengan kualitas kulit terbaik. Setiap dompet dibuat dengan presisi dan dapat dipersonalisasi sesuai keinginan Anda.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">Jelajahi Koleksi</button>
+                    <button class="btn-secondary">Pesan Custom</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/ffad919a-b712-47a6-a48f-cdc713407832" alt="Naraya Leather Wallet">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-container">
+            <h2 class="section-title">Tentang Naraya Leather</h2>
+            <p class="section-subtitle">Kami memahami bahwa setiap pria membutuhkan dompet yang tidak hanya fungsional, tetapi juga mencerminkan gaya dan kepribadian mereka.</p>
+            
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/2df33db4-f57b-4aa8-b150-704ad854446b" alt="Naraya Leather Product">
+                </div>
+                <div class="about-content">
+                    <h3>Visi & Misi Kami</h3>
+                    <p><strong>Visi:</strong> Menjadi brand dompet kulit lokal yang dikenal karena desain minimalis, kualitas tahan lama, dan layanan personalisasi yang responsif.</p>
+                    
+                    <p><strong>Misi:</strong></p>
+                    <ul class="value-list">
+                        <li>Menyediakan dompet kulit berkualitas tinggi untuk remaja dan dewasa kalangan menengah ke atas</li>
+                        <li>Menawarkan solusi hadiah mewah yang personal dan berkesan</li>
+                        <li>Membangun brand awareness melalui pemasaran digital yang strategis</li>
+                    </ul>
+
+                    <h3 style="margin-top: var(--spacing-lg);">Komitmen Kami</h3>
+                    <ul class="value-list">
+                        <li>Menggunakan kulit asli premium dengan durabilitas 3+ tahun</li>
+                        <li>Jahitan tangan dengan finishing sempurna</li>
+                        <li>Layanan personalisasi gratis (nama, inisial, logo)</li>
+                        <li>Kemasan premium siap jadi hadiah</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Variants Showcase Section -->
+    <section style="background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%); padding: var(--spacing-xl) var(--spacing-md);">
+        <div class="section-container">
+            <h2 class="section-title">Pilihan Warna Premium</h2>
+            <p class="section-subtitle">Naraya Leather tersedia dalam berbagai pilihan warna kulit premium. Setiap warna dipilih dengan cermat untuk memastikan kualitas dan durabilitas maksimal.</p>
+            
+            <div style="margin-top: var(--spacing-xl); text-align: center;">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/e8f5555e-c7db-4a93-981e-111f134800c3" alt="Pilihan Warna Leather Naraya" style="width: 100%; max-width: 600px; border-radius: var(--radius); box-shadow: var(--shadow-hover); display: inline-block;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-xl);">
+                <div style="text-align: center; padding: var(--spacing-md);">
+                    <div style="width: 80px; height: 80px; background: #000000; border-radius: var(--radius); margin: 0 auto var(--spacing-md); box-shadow: var(--shadow);"></div>
+                    <strong style="color: var(--color-primary);">Hitam</strong>
+                    <p style="font-size: 12px; color: var(--color-text-light); margin-top: 4px;">Classic & Elegant</p>
+                </div>
+                <div style="text-align: center; padding: var(--spacing-md);">
+                    <div style="width: 80px; height: 80px; background: #654321; border-radius: var(--radius); margin: 0 auto var(--spacing-md); box-shadow: var(--shadow);"></div>
+                    <strong style="color: var(--color-primary);">Coklat Gelap</strong>
+                    <p style="font-size: 12px; color: var(--color-text-light); margin-top: 4px;">Sophisticated</p>
+                </div>
+                <div style="text-align: center; padding: var(--spacing-md);">
+                    <div style="width: 80px; height: 80px; background: #8B4513; border-radius: var(--radius); margin: 0 auto var(--spacing-md); box-shadow: var(--shadow);"></div>
+                    <strong style="color: var(--color-primary);">Coklat Muda</strong>
+                    <p style="font-size: 12px; color: var(--color-text-light); margin-top: 4px;">Warm & Casual</p>
+                </div>
+                <div style="text-align: center; padding: var(--spacing-md);">
+                    <div style="width: 80px; height: 80px; background: #A0522D; border-radius: var(--radius); margin: 0 auto var(--spacing-md); box-shadow: var(--shadow);"></div>
+                    <strong style="color: var(--color-primary);">Tan</strong>
+                    <p style="font-size: 12px; color: var(--color-text-light); margin-top: 4px;">Premium Shade</p>
+                </div>
+                <div style="text-align: center; padding: var(--spacing-md);">
+                    <div style="width: 80px; height: 80px; background: #8B0000; border-radius: var(--radius); margin: 0 auto var(--spacing-md); box-shadow: var(--shadow);"></div>
+                    <strong style="color: var(--color-primary);">Maroon</strong>
+                    <p style="font-size: 12px; color: var(--color-text-light); margin-top: 4px;">Distinguished</p>
+                </div>
+                <div style="text-align: center; padding: var(--spacing-md);">
+                    <div style="width: 80px; height: 80px; background: #D4A574; border-radius: var(--radius); margin: 0 auto var(--spacing-md); box-shadow: var(--shadow);"></div>
+                    <strong style="color: var(--color-primary);">Caramel</strong>
+                    <p style="font-size: 12px; color: var(--color-text-light); margin-top: 4px;">Luxury Feel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products">
+        <div class="section-container">
+            <h2 class="section-title">Koleksi Produk</h2>
+            <p class="section-subtitle">Pilih dari berbagai model dompet dengan desain minimalis dan fungsional yang cocok untuk gaya hidup modern Anda.</p>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/9e8e88d9-6062-40cb-a2aa-bf6504242e90" alt="Bifold Slim - Dua Warna">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Bifold Slim</div>
+                        <div class="product-desc">Model lipat dua yang sempurna untuk kantong celana. Compact namun fungsional dengan tersedia dalam pilihan warna Hitam & Coklat premium.</div>
+                        <div class="product-specs">
+                            <strong>Spesifikasi:</strong><br>
+                            • 4-6 slot kartu<br>
+                            • 1-2 kompartemen uang<br>
+                            • Ukuran: 10.5 x 8.5 cm<br>
+                            • Tersedia: Hitam, Coklat
+                        </div>
+                        <div class="product-price">Rp 70.000</div>
+                        <button class="btn-primary" style="width: 100%;">Pilih Model</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/3302b8e9-1b66-4d65-a8f2-a0ab3465c9c6" alt="Bifold Custom dengan Logo Naraya Leather">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Bifold Custom</div>
+                        <div class="product-desc">Personalisasi dengan nama, inisial, atau logo Anda sendiri dengan teknik laser engraving yang presisi dan tahan lama.</div>
+                        <div class="product-specs">
+                            <strong>Spesifikasi:</strong><br>
+                            • Custom nama/inisial<br>
+                            • Laser engraving premium<br>
+                            • Design unik eksklusif<br>
+                            • Finishing sempurna
+                        </div>
+                        <div class="product-price">Rp 80.000 - 100.000</div>
+                        <button class="btn-primary" style="width: 100%;">Pesan Custom</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/f4bc2843-c0fe-4663-bec6-0487a6dbb9a1" alt="Premium Bundle - Interior Detail">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Premium Bundle</div>
+                        <div class="product-desc">Paket grosir untuk hadiah corporate atau pembelian dalam jumlah besar dengan kualitas premium dan layanan dedicated.</div>
+                        <div class="product-specs">
+                            <strong>Spesifikasi:</strong><br>
+                            • Min. 5 unit<br>
+                            • Custom branding available<br>
+                            • Harga spesial B2B<br>
+                            • Premium packaging included
+                        </div>
+                        <div class="product-price">Rp 325.000 (Min. 5 pcs)</div>
+                        <button class="btn-primary" style="width: 100%;">Hubungi Sales</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container" style="margin-top: var(--spacing-xl);">
+                <div class="stat-card">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Tahun Durabilitas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Kulit Asli Premium</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">♾️</div>
+                    <div class="stat-label">Personalisasi Gratis</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">⚡</div>
+                    <div class="stat-label">Pengiriman Cepat</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USP Section -->
+    <section id="usp">
+        <div class="section-container">
+            <h2 class="section-title" style="color: var(--color-light);">Keunggulan Kompetitif</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Mengapa memilih Naraya Leather?</p>
+            
+            <div class="usp-grid">
+                <div class="usp-card">
+                    <div class="usp-icon">🎨</div>
+                    <h4>Personalisasi Gratis</h4>
+                    <p>Custom nama, inisial, atau logo dengan teknik laser. Setiap dompet menjadi unik dan berkesan.</p>
+                </div>
+
+                <div class="usp-card">
+                    <div class="usp-icon">✨</div>
+                    <h4>Kualitas Premium</h4>
+                    <p>Menggunakan kulit sapi asli pullup premium dengan durabilitas lebih dari 3 tahun. Jahitan tangan yang rapi dan kuat.</p>
+                </div>
+
+                <div class="usp-card">
+                    <div class="usp-icon">📦</div>
+                    <h4>Design Minimalis</h4>
+                    <p>Dibuat untuk professional muda yang butuh efisiensi tanpa mengorbankan estetika. Cocok untuk kantong celana.</p>
+                </div>
+
+                <div class="usp-card">
+                    <div class="usp-icon">🌍</div>
+                    <h4>Brand Lokal Autentik</h4>
+                    <p>Buatan lokal dengan proses transparan. Dukung industri kerajinan Indonesia dengan kualitas world-class.</p>
+                </div>
+
+                <div class="usp-card">
+                    <div class="usp-icon">🎁</div>
+                    <h4>Kemasan Premium</h4>
+                    <p>Setiap pembelian dikemas dalam box cantik dengan dustbag. Siap jadi hadiah tanpa bungkus ulang.</p>
+                </div>
+
+                <div class="usp-card">
+                    <div class="usp-icon">💰</div>
+                    <h4>Harga Kompetitif</h4>
+                    <p>Kualitas setara brand impor dengan harga 50% lebih murah. Value for money terbaik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle & Quality Section -->
+    <section style="background: var(--color-light); padding: var(--spacing-xl) var(--spacing-md);">
+        <div class="section-container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); align-items: center;">
+                <div>
+                    <h2 style="font-size: 32px; color: var(--color-primary); margin-bottom: var(--spacing-md); font-weight: 700;">Kualitas Premium untuk Gaya Hidup Anda</h2>
+                    <p style="color: var(--color-text-light); margin-bottom: var(--spacing-md); font-size: 16px; line-height: 1.8;">Setiap dompet Naraya Leather dirancang untuk menjadi companion sempurna dalam keseharian Anda. Dibuat dengan perhatian detail yang tinggi, menggunakan kulit premium yang akan semakin indah seiring waktu.</p>
+                    <ul class="value-list" style="margin-bottom: var(--spacing-md);">
+                        <li style="font-size: 15px;">Patina alami yang berkembang dengan waktu</li>
+                        <li style="font-size: 15px;">Desain timeless yang tidak pernah ketinggalan zaman</li>
+                        <li style="font-size: 15px;">Investasi jangka panjang untuk gaya Anda</li>
+                        <li style="font-size: 15px;">Nyaman digunakan setiap hari tanpa kekhawatiran</li>
+                    </ul>
+                    <button class="btn-primary" style="margin-top: var(--spacing-md);">Pelajari Lebih Lanjut</button>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/4d29429e-4ff0-44ff-9e5a-29981f2b2647" alt="Dompet Naraya dalam Lifestyle Sehari-hari" style="width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-hover);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <p class="section-subtitle">Punya pertanyaan? Ingin memesan custom? Hubungi tim Naraya Leather kami sekarang.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    
+                    <div class="contact-item">
+                        <label>📱 WhatsApp / Telepon</label>
+                        <a href="https://wa.me/6283850386401">+62 838 5038 6401</a>
+                    </div>
+
+                    <div class="contact-item">
+                        <label>✉️ Email</label>
+                        <a href="mailto:rianmuhammadridwan86@gmail.com">rianmuhammadridwan86@gmail.com</a>
+                    </div>
+
+                    <div class="contact-item">
+                        <label>📍 Lokasi Produksi</label>
+                        <p>Sukaregang, Kec. Garut Kota, Kab. Garut</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <label>🏪 Marketplace</label>
+                        <p>Instagram: @naraya.leather<br>Shopee | Tokopedia | TikTok</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <label>⏰ Jam Operasional</label>
+                        <p>Senin - Minggu: 09:00 - 21:00 WIB<br>Respons pesanan: 1 jam</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="margin-bottom: var(--spacing-lg);">Kirim Pesan</h3>
+                    <form class="contact-form" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" required placeholder="Masukkan nama Anda">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="email@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telepon</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="08xx-xxxx-xxxx">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tulis pesan Anda di sini..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary" style="width: 100%; padding: 12px;">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div style="margin-bottom: var(--spacing-md); display: flex; align-items: center; justify-content: center; gap: var(--spacing-xs);">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/8fcc021d-5544-4ff5-86ca-6deaebfcde41" alt="Naraya Leather Logo" style="height: 40px; width: auto; filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(255,255,255,0.1)); image-rendering: -webkit-optimize-contrast;">
+            </div>
+            <p style="margin-bottom: var(--spacing-md);">Premium Handmade Leather Wallet | Kualitas Terjamin | Personalisasi Gratis</p>
+            
+            <div class="social-links">
+                <a href="https://instagram.com" title="Instagram">📷 Instagram</a>
+                <a href="https://tiktok.com" title="TikTok">🎵 TikTok</a>
+                <a href="https://wa.me/6283850386401" title="WhatsApp">💬 WhatsApp</a>
+                <a href="mailto:rianmuhammadridwan86@gmail.com" title="Email">✉️ Email</a>
+            </div>
+
+            <p style="margin-top: var(--spacing-lg); font-size: 12px; opacity: 0.8;">
+                &copy; 2025 Naraya Leather. All right reserved. | Dibuat dengan profesionalitas, dan komponen berkualias.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            menuToggle.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.remove('active');
+            menuToggle.textContent = '☰';
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container') && !e.target.closest('.mobile-menu')) {
+                mobileMenu.classList.remove('active');
+                menuToggle.textContent = '☰';
+            }
+        });
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `Halo Naraya Leather!\n\nNama: ${name}\nEmail: ${email}\nNo. Telepon: ${phone}\n\nPesan: ${message}`;
+            const whatsappUrl = `https://wa.me/6283850386401?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            event.target.reset();
+            alert('Pesan Anda akan dikirim ke WhatsApp. Terima kasih!');
+        }
+
+        // Smooth scroll untuk semua link internal
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
