@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Dashboard Pengelola Produk CMS - UKM Entrepreneur</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <!-- Fonts & Font Awesome-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS & Custom Admin CSS-->
+    <link href="../assets/css/styles.css" rel="stylesheet" />
+    <link href="css/admin.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <a href="dashboard.html" class="sidebar-brand">
+                <img id="sidebarLogoImg" src="" alt="Logo" class="d-none" style="height: 36px; max-width: 44px; object-fit: contain; border-radius: 6px; background: rgba(255,255,255,0.1); padding: 2px;" />
+                <i id="sidebarLogoIcon" class="fas fa-store text-warning fa-lg"></i>
+                <div>
+                    <div class="fw-bold leading-none" id="sidebarBrandName">KATALOG CMS</div>
+                    <small class="text-muted" style="font-size: 0.65rem; font-weight: 400;">Pengelola Produk</small>
+                </div>
+            </a>
+
+            <div class="sidebar-nav">
+                <div class="nav-section-title">Menu Utama</div>
+                <a href="#overview" class="sidebar-link active" data-target="overviewSection">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Ringkasan</span>
+                </a>
+                <a href="#ukm" class="sidebar-link" data-target="ukmSection">
+                    <i class="fas fa-box-open"></i>
+                    <span>Katalog Produk</span>
+                </a>
+                <a href="#posts" class="sidebar-link" data-target="postsSection">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Postingan / Berita</span>
+                </a>
+
+                <div class="nav-section-title">Akses Luar</div>
+                <a href="../index.html" target="_blank" class="sidebar-link text-warning">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>Lihat Katalog Produk</span>
+                </a>
+
+                <div class="nav-section-title">Akun & Sistem</div>
+                <a href="#settings" class="sidebar-link" data-target="settingsSection">
+                    <i class="fas fa-cog"></i>
+                    <span>Pengaturan</span>
+                </a>
+                <a href="javascript:void(0)" onclick="logout()" class="sidebar-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Keluar (Logout)</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="user-avatar" style="width: 32px; height: 32px; font-size: 0.75rem;">ADM</div>
+                    <div class="small leading-tight overflow-hidden">
+                        <div class="text-truncate fw-bold">Admin Utama</div>
+                        <div class="text-white-50" style="font-size: 0.7rem;">admin@ukm.id</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="admin-main">
+            <!-- Topbar Header -->
+            <header class="admin-topbar">
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-sm btn-outline-secondary d-lg-none" onclick="document.querySelector('.admin-sidebar').classList.toggle('show')">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div>
+                        <div class="topbar-breadcrumb small text-muted"><i class="fas fa-shield-alt text-warning me-1"></i> Panel Admin CMS</div>
+                        <h5 class="mb-0 fw-bold" id="topbarPageTitle">Kelola Katalog Produk</h5>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-warning btn-sm fw-bold px-3 d-flex align-items-center gap-2 shadow-sm" onclick="openAddUkmModal()">
+                        <i class="fas fa-plus"></i> <span>Tambah Produk</span>
+                    </button>
+                    <a href="../index.html" target="_blank" class="btn btn-outline-dark btn-sm d-flex align-items-center gap-2" title="Buka Website Publik">
+                        <i class="fas fa-external-link-alt"></i> <span class="d-none d-sm-inline">Lihat Web</span>
+                    </a>
+                </div>
+            </header>
+
+            <!-- Page Body Content -->
+            <div class="admin-content">
+
+                <!-- TAB 1: OVERVIEW SECTION -->
+                <section id="overviewSection" class="tab-section active">
+                    <div class="mb-4">
+                        <h4 class="fw-bold mb-1">Katalog Produk Wirausaha</h4>
+                        <p class="text-muted mb-0">Kelola gambar produk yang dijual, tentukan harga, pilih kategori, dan atur nomor pemesanan.</p>
+                    </div>
+
+                    <!-- Stat Widgets (5 Columns Grid) -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-xl col-md-4 col-sm-6">
+                            <div class="stat-widget h-100">
+                                <div>
+                                    <div class="text-muted small fw-bold text-uppercase mb-1">Total Produk</div>
+                                    <h3 class="fw-bold mb-0 text-dark" id="statTotalUkm">8</h3>
+                                </div>
+                                <div class="stat-icon warning"><i class="fas fa-boxes-stacked"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-xl col-md-4 col-sm-6">
+                            <div class="stat-widget h-100">
+                                <div>
+                                    <div class="text-muted small fw-bold text-uppercase mb-1">Makanan & Minuman</div>
+                                    <h3 class="fw-bold mb-0 text-warning" id="statMakanan">2</h3>
+                                </div>
+                                <div class="stat-icon warning"><i class="fas fa-utensils"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-xl col-md-4 col-sm-6">
+                            <div class="stat-widget h-100">
+                                <div>
+                                    <div class="text-muted small fw-bold text-uppercase mb-1">Kerajinan Kulit</div>
+                                    <h3 class="fw-bold mb-0 text-danger" id="statKulit">2</h3>
+                                </div>
+                                <div class="stat-icon primary"><i class="fas fa-wallet"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-xl col-md-6 col-sm-6">
+                            <div class="stat-widget h-100">
+                                <div>
+                                    <div class="text-muted small fw-bold text-uppercase mb-1">Elektronik & IoT</div>
+                                    <h3 class="fw-bold mb-0 text-info" id="statElektronik">2</h3>
+                                </div>
+                                <div class="stat-icon purple"><i class="fas fa-microchip"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-xl col-md-6 col-sm-6">
+                            <div class="stat-widget h-100">
+                                <div>
+                                    <div class="text-muted small fw-bold text-uppercase mb-1">Jasa Profesional</div>
+                                    <h3 class="fw-bold mb-0 text-success" id="statJasa">2</h3>
+                                </div>
+                                <div class="stat-icon success"><i class="fas fa-hands-helping"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 align-items-stretch">
+                        <div class="col-lg-8">
+                            <div class="admin-card h-100 mb-0">
+                                <div class="admin-card-header bg-light-subtle">
+                                    <h6 class="fw-bold mb-0 text-dark"><i class="fas fa-check-circle text-warning me-2"></i>Panduan Menambahkan Produk</h6>
+                                </div>
+                                <div class="admin-card-body d-flex flex-column justify-content-between">
+                                    <div>
+                                        <p class="text-muted">Setiap produk yang Anda tambahkan atau edit di sini langsung muncul di katalog publik secara instan:</p>
+                                        <ul class="text-muted mb-4 small">
+                                            <li class="mb-2"><strong>Unggah Gambar:</strong> Masukkan foto produk yang jelas dan menarik.</li>
+                                            <li class="mb-2"><strong>Atur Kategori:</strong> Pilih dari 4 sektor utama (*Makanan/Minuman, Kerajinan Kulit, Elektronik, Jasa*).</li>
+                                            <li class="mb-2"><strong>Harga & Spesifikasi:</strong> Cantumkan harga produk dan spesifikasi bahan agar calon pembeli langsung paham.</li>
+                                            <li class="mb-2"><strong>Nomor WhatsApp:</strong> Calon pembeli yang mengklik produk akan langsung diarahkan ke chat WhatsApp untuk memesan produk tersebut.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-warning btn-sm fw-bold px-3" onclick="document.querySelector('.sidebar-link[data-target=ukmSection]').click()">
+                                            <i class="fas fa-arrow-right me-1"></i> Buka Tabel Katalog Produk
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="admin-card h-100 mb-0">
+                                <div class="admin-card-header bg-light-subtle">
+                                    <h6 class="fw-bold mb-0 text-dark"><i class="fas fa-newspaper text-warning me-2"></i>Artikel & Berita</h6>
+                                </div>
+                                <div class="admin-card-body text-center py-4 d-flex flex-column justify-content-center">
+                                    <div class="display-4 fw-bold text-dark mb-1" id="statTotalPosts">3</div>
+                                    <p class="text-muted small mb-3">Postingan Wirausaha Aktif</p>
+                                    <button class="btn btn-outline-dark btn-sm w-100 fw-semibold" onclick="openAddPostModal()">
+                                        <i class="fas fa-pen me-1"></i> Tulis Berita Baru
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 2: MANAJEMEN PRODUK SECTION -->
+                <section id="ukmSection" class="tab-section">
+                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                        <div>
+                            <h4 class="fw-bold mb-1">Katalog Produk yang Dijual</h4>
+                            <p class="text-muted mb-0">Kelola foto produk, harga, kategori, dan deskripsi produk yang dijual.</p>
+                        </div>
+                        <button class="btn btn-warning fw-bold shadow-sm d-flex align-items-center gap-2" onclick="openAddUkmModal()">
+                            <i class="fas fa-plus"></i> <span>Tambah Produk Baru</span>
+                        </button>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="admin-card-header py-3">
+                            <div class="d-flex align-items-center justify-content-between gap-3 flex-wrap w-100">
+                                <div class="d-flex align-items-center gap-2 flex-wrap flex-grow-1">
+                                    <!-- Search Input -->
+                                    <div class="input-group" style="max-width: 320px;">
+                                        <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                                        <input type="text" id="searchUkmInput" class="form-control border-start-0 ps-0" placeholder="Cari produk, spesifikasi..." oninput="renderProductTable()" />
+                                    </div>
+
+                                    <!-- Filter Select -->
+                                    <select id="filterUkmSelect" class="form-select" style="max-width: 220px;" onchange="renderProductTable()">
+                                        <option value="all">Semua Sektor (Filter)</option>
+                                        <option value="makanan">Makanan & Minuman</option>
+                                        <option value="kulit">Kerajinan Kulit, dsb.</option>
+                                        <option value="elektronik">Elektronik & IoT</option>
+                                        <option value="jasa">Jasa Profesional</option>
+                                    </select>
+                                </div>
+                                <div id="productCountBadge" class="badge bg-light text-dark border px-3 py-2 fw-semibold">
+                                    8 Produk
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table admin-table align-middle table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 60px; text-align: center;">No</th>
+                                        <th style="min-width: 260px;">Produk & Spesifikasi</th>
+                                        <th style="width: 170px;">Kategori Sektor</th>
+                                        <th style="width: 140px;">Harga Satuan</th>
+                                        <th style="width: 180px;">WhatsApp Pemesanan</th>
+                                        <th class="text-end" style="width: 110px;">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ukmTableBody">
+                                    <!-- Rendered dynamically via admin.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 3: POSTINGAN & BERITA SECTION -->
+                <section id="postsSection" class="tab-section">
+                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                        <div>
+                            <h4 class="fw-bold mb-1">Postingan & Berita Wirausaha</h4>
+                            <p class="text-muted mb-0">Kelola artikel liputan produk dan panduan bisnis UKM.</p>
+                        </div>
+                        <button class="btn btn-warning fw-bold" onclick="openAddPostModal()">
+                            <i class="fas fa-pen me-1"></i> Tulis Postingan Baru
+                        </button>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="table-responsive">
+                            <table class="table admin-table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 50px;">No</th>
+                                        <th>Judul Artikel & Cuplikan</th>
+                                        <th>Kategori</th>
+                                        <th>Tanggal Rilis</th>
+                                        <th class="text-end" style="width: 100px;">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="postsTableBody">
+                                    <!-- Rendered dynamically via admin.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 4: PENGATURAN SECTION -->
+                <section id="settingsSection" class="tab-section">
+                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                        <div>
+                            <h4 class="fw-bold mb-1">Pengaturan Identitas & Kontak Website</h4>
+                            <p class="text-muted mb-0">Kelola nama brand, slogan hero, nomor WhatsApp, email, alamat fisik, dan link media sosial secara terpusat.</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-outline-secondary btn-sm fw-semibold" onclick="resetSettingsForm()">
+                                <i class="fas fa-undo me-1"></i> Pulihkan Default
+                            </button>
+                            <button type="button" class="btn btn-warning fw-bold shadow-sm d-flex align-items-center gap-2" onclick="document.getElementById('siteSettingsForm').requestSubmit()">
+                                <i class="fas fa-save"></i> <span>Simpan Perubahan</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <form id="siteSettingsForm" onsubmit="handleSaveSettings(event)">
+                        <div class="row g-4">
+                            <!-- Kolom Kiri: Identitas Brand & Konten Hero -->
+                            <div class="col-lg-7">
+                                <!-- Card 1: Identitas & Hero Banner -->
+                                <div class="admin-card mb-4">
+                                    <div class="admin-card-header bg-light-subtle">
+                                        <h6 class="fw-bold mb-0 text-dark">
+                                            <i class="fas fa-id-card text-warning me-2"></i>Identitas Brand & Banner Utama (Hero)
+                                        </h6>
+                                    </div>
+                                    <div class="admin-card-body p-4">
+                                        <!-- Pengaturan Logo Brand -->
+                                        <div class="mb-4 p-3 bg-light rounded-3 border">
+                                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                                <label class="form-label small fw-bold text-dark mb-0">
+                                                    <i class="fas fa-image text-warning me-1"></i> Logo Brand / Usaha
+                                                </label>
+                                                <span class="badge bg-white text-muted border">Opsional</span>
+                                            </div>
+                                            <div class="d-flex align-items-center gap-3 mb-3">
+                                                <!-- Logo Preview Box -->
+                                                <div id="logoPreviewContainer" class="d-flex align-items-center justify-content-center bg-dark border rounded-3 p-2 shadow-sm" style="width: 76px; height: 76px; min-width: 76px; overflow: hidden;" title="Pratinjau tampilan di header gelap">
+                                                    <img id="logoPreviewImg" src="" alt="Preview Logo" class="d-none" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+                                                    <i id="logoPreviewPlaceholder" class="fas fa-store text-warning fa-2x"></i>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <div class="d-flex gap-2 mb-2 flex-wrap">
+                                                        <label class="btn btn-warning btn-sm fw-bold mb-0 cursor-pointer" style="cursor: pointer;">
+                                                            <i class="fas fa-upload me-1"></i> Unggah File Logo
+                                                            <input type="file" id="settingLogoFile" accept="image/*" class="d-none" onchange="handleLogoFileUpload(event)" />
+                                                        </label>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm" id="btnMakeTransparent" onclick="makeLogoTransparent()" style="display: none;" title="Otomatis menghapus latar belakang putih menjadi transparan">
+                                                            <i class="fas fa-magic text-warning me-1"></i> Hapus Background Putih
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline-danger btn-sm" id="btnRemoveLogo" onclick="removeLogo()" style="display: none;">
+                                                            <i class="fas fa-trash-alt me-1"></i> Hapus Logo
+                                                        </button>
+                                                    </div>
+                                                    <small class="text-muted d-block" style="font-size: 0.78rem;">
+                                                        Logo ini akan tampil di <strong>Navbar Web, Favicon Browser, Footer, dan Sidebar CMS</strong>.
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <!-- Gaya / Bentuk Logo di Header -->
+                                            <div class="row g-2 mb-3 pt-2 border-top">
+                                                <div class="col-md-7">
+                                                    <label class="form-label small fw-bold text-dark mb-1" style="font-size: 0.78rem;">
+                                                        <i class="fas fa-crop-alt text-warning me-1"></i> Gaya Tampilan Logo di Header:
+                                                    </label>
+                                                    <select id="settingLogoStyle" class="form-select form-select-sm" onchange="updateLogoPreviewStyle(this.value)">
+                                                        <option value="circle">Badge Lingkaran Emas (Rekomendasi untuk logo bulat berlatar putih)</option>
+                                                        <option value="original">Polos / Asli (Untuk logo PNG transparan tanpa latar)</option>
+                                                        <option value="rounded">Badge Rounded Modern (Kotak Sudut Melengkung)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-5 d-flex align-items-end">
+                                                    <small class="text-muted" style="font-size: 0.72rem; line-height: 1.35;">
+                                                        Mode <strong>Badge Lingkaran</strong> memotong kotak putih persegi menjadi lingkaran rapi dengan list emas elegan.
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <label class="form-label small fw-semibold text-muted mb-1" style="font-size: 0.78rem;">Atau Masukkan URL Gambar Logo Eksternal:</label>
+                                                <div class="input-group input-group-sm">
+                                                    <span class="input-group-text bg-white"><i class="fas fa-link text-muted"></i></span>
+                                                    <input type="text" id="settingLogoUrl" class="form-control" placeholder="assets/img/... atau https://domain.com/logo.png" oninput="handleLogoUrlInput(this.value)" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label small fw-bold text-muted">Nama Brand / Usaha *</label>
+                                            <input type="text" id="settingBrandName" class="form-control" required placeholder="Contoh: UKM ENTREPRENEUR" />
+                                            <small class="text-muted">Ditampilkan pada navbar atas, judul halaman, dan copyright footer.</small>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label small fw-bold text-muted">Tagline Sub-Heading Hero *</label>
+                                            <input type="text" id="settingTagline" class="form-control" required placeholder="Contoh: Etalase Inovasi & Produk Usaha Mandiri" />
+                                            <small class="text-muted">Teks pembuka di atas judul besar banner utama.</small>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label small fw-bold text-muted">Headline Judul Utama Hero *</label>
+                                            <input type="text" id="settingHeadline" class="form-control" required placeholder="Contoh: KATALOG PRODUK UNGGULAN" />
+                                            <small class="text-muted">Judul utama banner di halaman depan (huruf kapital).</small>
+                                        </div>
+                                        <div class="mb-0">
+                                            <label class="form-label small fw-bold text-muted">Deskripsi Singkat / Profil Pengantar *</label>
+                                            <textarea id="settingSubheadline" class="form-control" rows="3" required placeholder="Tuliskan deskripsi singkat usaha Anda..."></textarea>
+                                            <small class="text-muted">Paragraf pengantar yang menjelaskan produk & layanan di banner depan.</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 2: Media Sosial & Hak Cipta -->
+                                <div class="admin-card">
+                                    <div class="admin-card-header bg-light-subtle">
+                                        <h6 class="fw-bold mb-0 text-dark">
+                                            <i class="fas fa-share-alt text-warning me-2"></i>Media Sosial & Footer
+                                        </h6>
+                                    </div>
+                                    <div class="admin-card-body p-4">
+                                        <div class="row g-3 mb-3">
+                                            <div class="col-md-4">
+                                                <label class="form-label small fw-bold text-muted"><i class="fab fa-instagram text-danger me-1"></i> Instagram / Twitter</label>
+                                                <input type="url" id="settingInstagram" class="form-control" placeholder="https://instagram.com/..." />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label small fw-bold text-muted"><i class="fab fa-facebook text-primary me-1"></i> Facebook</label>
+                                                <input type="url" id="settingFacebook" class="form-control" placeholder="https://facebook.com/..." />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label small fw-bold text-muted"><i class="fab fa-linkedin text-info me-1"></i> LinkedIn</label>
+                                                <input type="url" id="settingLinkedin" class="form-control" placeholder="https://linkedin.com/..." />
+                                            </div>
+                                        </div>
+                                        <div class="mb-0">
+                                            <label class="form-label small fw-bold text-muted">Teks Hak Cipta Footer</label>
+                                            <input type="text" id="settingFooterText" class="form-control" placeholder="© 2026 UKM Entrepreneur Indonesia. Template by Start Bootstrap." />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Kolom Kanan: Kontak, Alamat, dan Pengelola -->
+                            <div class="col-lg-5">
+                                <!-- Card 3: Kontak & Alamat Fisik -->
+                                <div class="admin-card mb-4">
+                                    <div class="admin-card-header bg-light-subtle">
+                                        <h6 class="fw-bold mb-0 text-dark">
+                                            <i class="fas fa-map-marker-alt text-warning me-2"></i>Kontak, Lokasi & Operasional
+                                        </h6>
+                                    </div>
+                                    <div class="admin-card-body p-4">
+                                        <div class="mb-3">
+                                            <label class="form-label small fw-bold text-muted"><i class="fab fa-whatsapp text-success me-1"></i> Nomor WhatsApp Utama *</label>
+                                            <input type="text" id="settingPhone" class="form-control" required placeholder="6283850386401" />
+                                            <small class="text-muted">Digunakan sebagai nomor tujuan pemesanan produk dan form konsultasi.</small>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label small fw-bold text-muted"><i class="fas fa-envelope text-primary me-1"></i> Alamat Email Resmi *</label>
+                                            <input type="email" id="settingEmail" class="form-control" required placeholder="kontak@ukm-entrepreneur.id" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label small fw-bold text-muted"><i class="fas fa-clock text-warning me-1"></i> Jam Operasional *</label>
+                                            <input type="text" id="settingHours" class="form-control" required placeholder="Senin - Sabtu: 08.00 - 17.00 WIB" />
+                                        </div>
+                                        <div class="mb-0">
+                                            <label class="form-label small fw-bold text-muted"><i class="fas fa-building text-secondary me-1"></i> Alamat Kantor / Workshop / Gerai *</label>
+                                            <textarea id="settingAddress" class="form-control" rows="3" required placeholder="Jl. Riau No. 120, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 4: Status Akun & Utilitas Database -->
+                                <div class="admin-card">
+                                    <div class="admin-card-header bg-light-subtle">
+                                        <h6 class="fw-bold mb-0 text-dark">
+                                            <i class="fas fa-user-shield text-warning me-2"></i>Akun & Utilitas Database
+                                        </h6>
+                                    </div>
+                                    <div class="admin-card-body p-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+                                            <div>
+                                                <div class="fw-bold text-dark small">Pengelola Aktif</div>
+                                                <div class="text-muted small">Admin Pusat UKM (admin)</div>
+                                            </div>
+                                            <span class="badge bg-success-subtle text-success border border-success px-2 py-1">Aktif</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <div class="fw-bold text-dark small">Reset Data Produk</div>
+                                                <div class="text-muted small">Kembalikan katalog ke 8 default</div>
+                                            </div>
+                                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="if(confirm('Kembalikan katalog ke 8 produk default?')){ localStorage.removeItem('ukm_products'); localStorage.removeItem('ukm_list'); location.reload(); }">
+                                                <i class="fas fa-undo me-1"></i> Reset Produk
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sticky Action Bar on Bottom -->
+                        <div class="admin-card mt-4 p-3 bg-white border border-warning shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                <div class="text-muted small">
+                                    <i class="fas fa-info-circle text-warning me-1"></i>
+                                    Perubahan pengaturan akan langsung diterapkan ke seluruh halaman publik (Navbar, Hero, Kontak, dan Footer).
+                                </div>
+                                <button type="submit" class="btn btn-warning fw-bold px-4">
+                                    <i class="fas fa-save me-1"></i> Simpan Semua Pengaturan Website
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== MODAL TAMBAH / EDIT PRODUK ==================== -->
+    <div class="modal fade" id="ukmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white border-bottom border-warning border-3">
+                    <h5 class="modal-title fw-bold" id="ukmModalTitle">Tambah Produk Baru</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="ukmForm" onsubmit="handleSaveProduct(event)">
+                    <div class="modal-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-7">
+                                <label class="form-label small fw-bold text-muted">Nama Produk yang Dijual *</label>
+                                <input type="text" id="inputProductName" class="form-control" required placeholder="Contoh: Dompet Kulit Bifold Slim" />
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label small fw-bold text-muted">Harga Produk (Rp) *</label>
+                                <input type="text" id="inputProductPrice" class="form-control" required placeholder="Contoh: Rp 85.000" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-muted">Kategori Produk *</label>
+                                <select id="inputProductCategory" class="form-select" required>
+                                    <option value="" disabled selected>Pilih Kategori Produk</option>
+                                    <option value="makanan">Makanan & Minuman</option>
+                                    <option value="kulit">Kerajinan Kulit, dsb.</option>
+                                    <option value="elektronik">Elektronik & IoT</option>
+                                    <option value="jasa">Jasa</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-muted">Nomor WhatsApp Pemesanan *</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light">+</span>
+                                    <input type="text" id="inputProductPhone" class="form-control" required placeholder="6283850386401" />
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label small fw-bold text-muted">Spesifikasi Singkat (Bahan / Ukuran / Berat) *</label>
+                                <input type="text" id="inputProductSpecs" class="form-control" required placeholder="Contoh: Kulit Sapi Pull-Up Asli, 6 Slot Kartu, Dimensi 11x9 cm" />
+                            </div>
+
+                            <!-- Upload Foto Produk -->
+                            <div class="col-12">
+                                <label class="form-label small fw-bold text-muted">Unggah Foto Produk *</label>
+                                <input type="file" id="inputUkmFile" class="form-control" accept="image/*" onchange="handleImageFileSelect(this)" />
+                                <small class="text-muted">Pilih foto produk yang jelas dari perangkat komputer Anda.</small>
+                                
+                                <div id="ukmImagePreviewContainer" class="mt-2 text-center d-none">
+                                    <img id="ukmImagePreview" src="" alt="Preview Produk" style="max-height: 180px; border-radius: 8px; border: 1px solid #ced4da;" />
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label small fw-bold text-muted">Deskripsi Lengkap Produk *</label>
+                                <textarea id="inputProductDesc" class="form-control" rows="4" required placeholder="Jelaskan keunggulan produk, varian rasa/warna, manfaat, atau cara pemakaian..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-light p-3">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-warning fw-bold px-4">
+                            <i class="fas fa-save me-1"></i> Simpan Produk
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL TULIS POSTINGAN ==================== -->
+    <div class="modal fade" id="postModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white border-bottom border-warning border-3">
+                    <h5 class="modal-title fw-bold">Tulis Postingan / Berita Baru</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="postForm" onsubmit="handleSavePost(event)">
+                    <div class="modal-body p-4">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Judul Artikel / Berita *</label>
+                            <input type="text" id="inputPostTitle" class="form-control" required placeholder="Contoh: Tren Bisnis Kuliner Kreatif 2026" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Kategori *</label>
+                            <select id="inputPostCategory" class="form-select" required>
+                                <option value="Umum & Bisnis">Umum & Bisnis</option>
+                                <option value="Makanan & Minuman">Makanan & Minuman</option>
+                                <option value="Kerajinan Kulit, dsb.">Kerajinan Kulit, dsb.</option>
+                                <option value="Elektronik">Elektronik & Teknologi</option>
+                                <option value="Jasa">Jasa & Kreatif</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Isi Konten Artikel *</label>
+                            <textarea id="inputPostContent" class="form-control" rows="6" required placeholder="Tuliskan isi artikel atau pengumuman UKM di sini..."></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-light p-3">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-warning fw-bold px-4">
+                            <i class="fas fa-paper-plane me-1"></i> Terbitkan Postingan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="adminToastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Login Pengelola CMS - UKM Entrepreneur</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="../assets/css/styles.css" rel="stylesheet" />
+    <style>
+        body, input, button {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+        }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .login-header h4 {
+            font-family: 'Montserrat', sans-serif !important;
+        }
+        .login-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 440px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .login-header {
+            background-color: #212529;
+            color: #ffffff;
+            padding: 2.5rem 2rem 2rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid #ffc800;
+        }
+        .login-body {
+            padding: 2.5rem 2rem;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #ced4da;
+        }
+        .form-control:focus {
+            border-color: #ffc800;
+            box-shadow: 0 0 0 3px rgba(255, 200, 0, 0.25);
+        }
+        .btn-login {
+            background-color: #ffc800;
+            color: #212529;
+            font-weight: 700;
+            padding: 0.85rem;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .btn-login:hover {
+            background-color: #e5b400;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="login-header">
+            <img id="loginLogoImg" src="" alt="Logo" class="d-none mb-2" style="max-height: 52px; max-width: 160px; object-fit: contain;" />
+            <i id="loginLogoIcon" class="fas fa-store text-warning fa-2x mb-2 d-block"></i>
+            <h4 class="fw-bold mb-1" id="loginBrandName">UKM ENTREPRENEUR</h4>
+            <p class="small text-white-50 mb-0">Panel Pengelola Katalog Produk</p>
+        </div>
+        <div class="login-body">
+            <div id="alertBox" class="alert alert-info py-2 small mb-4">
+                <i class="fas fa-info-circle me-1"></i> Mode Setup: Siap dikoneksikan ke database & backend API.
+            </div>
+            <form onsubmit="handleDemoLogin(event)">
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-muted">Email / Username</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light"><i class="fas fa-user text-muted"></i></span>
+                        <input type="text" id="username" class="form-control" placeholder="admin" required value="admin" />
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Kata Sandi</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light"><i class="fas fa-lock text-muted"></i></span>
+                        <input type="password" id="password" class="form-control" placeholder="••••••••" required value="admin123" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-login mb-3">
+                    <i class="fas fa-sign-in-alt me-2"></i> Masuk ke Dashboard CMS
+                </button>
+            </form>
+            <div class="text-center mt-3">
+                <a href="../index.html" class="text-muted small text-decoration-none">
+                    <i class="fas fa-arrow-left me-1"></i> Kembali ke Katalog Publik
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if already logged in
+        if (localStorage.getItem('ukm_admin_logged') === 'true') {
+            window.location.href = 'dashboard.html';
+        }
+
+        // Sinkronisasi Logo & Nama Brand dari CMS
+        const rawSettings = localStorage.getItem('ukm_site_settings');
+        if (rawSettings) {
+            try {
+                const s = JSON.parse(rawSettings);
+                if (s.brandName) {
+                    const brandEl = document.getElementById('loginBrandName');
+                    if (brandEl) brandEl.textContent = s.brandName;
+                    document.title = `${s.brandName} - Login Panel CMS`;
+                }
+                if (s.logoUrl && s.logoUrl.trim() !== '') {
+                    const img = document.getElementById('loginLogoImg');
+                    const icon = document.getElementById('loginLogoIcon');
+                    if (img) {
+                        img.src = s.logoUrl;
+                        img.classList.remove('d-none');
+                        if ((s.logoStyle || 'circle') === 'circle') {
+                            img.style.borderRadius = '50%';
+                            img.style.border = '2px solid #ffc800';
+                            img.style.backgroundColor = '#ffffff';
+                            img.style.padding = '2px';
+                            img.style.width = '64px';
+                            img.style.height = '64px';
+                            img.style.objectFit = 'cover';
+                        } else if (s.logoStyle === 'rounded') {
+                            img.style.borderRadius = '12px';
+                            img.style.border = '2px solid #ffc800';
+                            img.style.backgroundColor = '#ffffff';
+                            img.style.padding = '2px';
+                            img.style.width = '64px';
+                            img.style.height = '64px';
+                            img.style.objectFit = 'cover';
+                        } else {
+                            img.style.borderRadius = '0';
+                            img.style.border = 'none';
+                            img.style.backgroundColor = 'transparent';
+                            img.style.padding = '0';
+                        }
+                    }
+                    if (icon) icon.classList.add('d-none');
+                }
+            } catch(e) {}
+        }
+
+        function handleDemoLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('username').value.trim();
+            const p = document.getElementById('password').value.trim();
+
+            if (u === 'admin' && p === 'admin123') {
+                localStorage.setItem('ukm_admin_logged', 'true');
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Username atau password salah! Gunakan username: admin dan password: admin123');
+            }
+        }
+    </script>
+</body>
+</html>

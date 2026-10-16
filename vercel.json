@@ -1,10 +1,12 @@
 {
-  "buildCommand": "",
-  "outputDirectory": ".",
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/index.html"
-    }
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/ukm-entrepreneur/index.html" },
+    { "source": "/admin", "destination": "/ukm-entrepreneur/admin/dashboard.html" },
+    { "source": "/admin/dashboard", "destination": "/ukm-entrepreneur/admin/dashboard.html" },
+    { "source": "/admin/login", "destination": "/ukm-entrepreneur/admin/login.html" },
+    { "source": "/api/:match*", "destination": "/ukm-entrepreneur/api/:match*" },
+    { "source": "/assets/:match*", "destination": "/ukm-entrepreneur/assets/:match*" },
+    { "source": "/admin/:match*", "destination": "/ukm-entrepreneur/admin/:match*" }
   ]
 }

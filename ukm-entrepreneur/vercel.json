@@ -1,0 +1,9 @@
+{
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin/dashboard.html" },
+    { "source": "/admin/login", "destination": "/admin/login.html" }
+  ]
+}
