@@ -66,7 +66,7 @@ Platform Website Profil & Katalog Produk Komersial UKM Entrepreneur dengan integ
 ### 1. Database PostgreSQL Gratis (Neon.tech)
 1. Buat akun gratis di [Neon Console](https://console.neon.tech/).
 2. Buat database baru (misal: `ukm-db`).
-3. Buka menu **SQL Editor**, salin dan jalankan seluruh isi file [`schema.sql`](file:///c:/Users/inboo/Documents/Project/Naraya-Leather/schema.sql).
+3. Buka menu **SQL Editor**, salin dan jalankan seluruh isi file [`schema.sql`](./schema.sql).
 4. Salin string koneksi database dari dashboard Neon (format: `postgres://user:pass@ep-xyz.neon.tech/ukm-db?sslmode=require`).
 
 ### 2. Deploy Frontend & Backend ke Vercel
