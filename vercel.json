@@ -1,5 +1,5 @@
 {
-  "name": "ukm-entrepreneur",
+  "name": "ukm",
   "cleanUrls": true,
   "rewrites": [
     { "source": "/admin", "destination": "/admin/dashboard.html" },
