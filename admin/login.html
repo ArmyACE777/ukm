@@ -71,8 +71,12 @@
 <body>
     <div class="login-card">
         <div class="login-header">
-            <img id="loginLogoImg" src="" alt="Logo" class="d-none mb-2" style="max-height: 52px; max-width: 160px; object-fit: contain;" />
-            <i id="loginLogoIcon" class="fas fa-store text-warning fa-2x mb-2 d-block"></i>
+            <div class="d-flex justify-content-center mb-2">
+                <img id="loginLogoImg" src="../assets/img/ui/logo-ukm.jpeg" alt="Logo" class="rounded-circle border border-warning border-2 p-1 bg-white shadow-sm" style="width: 64px; height: 64px; object-fit: cover;" onerror="this.style.display='none'; document.getElementById('loginFallbackIcon').style.display='block';" />
+                <span id="loginFallbackIcon" style="display: none;">
+                    <i class="fas fa-store text-warning fa-2x"></i>
+                </span>
+            </div>
             <h4 class="fw-bold mb-1" id="loginBrandName">UKM ENTREPRENEUR</h4>
             <p class="small text-white-50 mb-0">Panel Pengelola Katalog Produk</p>
         </div>
@@ -122,36 +126,21 @@
                 if (brandEl) brandEl.textContent = s.brandName;
                 document.title = `${s.brandName} - Login Panel CMS`;
             }
+                const img = document.getElementById('loginLogoImg');
+                const icon = document.getElementById('loginFallbackIcon');
                 if (s.logoUrl && s.logoUrl.trim() !== '') {
-                    const img = document.getElementById('loginLogoImg');
-                    const icon = document.getElementById('loginLogoIcon');
-                    if (img) {
-                        img.src = s.logoUrl;
-                        img.classList.remove('d-none');
-                        if ((s.logoStyle || 'circle') === 'circle') {
-                            img.style.borderRadius = '50%';
-                            img.style.border = '2px solid #ffc800';
-                            img.style.backgroundColor = '#ffffff';
-                            img.style.padding = '2px';
-                            img.style.width = '64px';
-                            img.style.height = '64px';
-                            img.style.objectFit = 'cover';
-                        } else if (s.logoStyle === 'rounded') {
-                            img.style.borderRadius = '12px';
-                            img.style.border = '2px solid #ffc800';
-                            img.style.backgroundColor = '#ffffff';
-                            img.style.padding = '2px';
-                            img.style.width = '64px';
-                            img.style.height = '64px';
-                            img.style.objectFit = 'cover';
-                        } else {
-                            img.style.borderRadius = '0';
-                            img.style.border = 'none';
-                            img.style.backgroundColor = 'transparent';
-                            img.style.padding = '0';
-                        }
+                    let src = s.logoUrl.trim();
+                    if (!src.startsWith('../') && !src.startsWith('/') && !src.startsWith('data:') && !src.startsWith('http')) {
+                        src = '../' + src;
                     }
-                    if (icon) icon.classList.add('d-none');
+                    if (img) {
+                        img.src = src;
+                        img.style.display = 'block';
+                    }
+                    if (icon) icon.style.display = 'none';
+                } else {
+                    if (img) img.style.display = 'none';
+                    if (icon) icon.style.display = 'block';
                 }
             } catch(e) {}
         }

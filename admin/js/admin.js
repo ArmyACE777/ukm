@@ -480,13 +480,43 @@ function renderProductTable() {
 // Modal Form Tambah / Edit Produk
 let currentEditingProductId = null;
 
+function updateModalCategoryBadge(cat) {
+    const badge = document.getElementById('modalPreviewCategoryBadge');
+    if (!badge) return;
+    const catMap = {
+        makanan: { label: '🍽️ Makanan & Minuman', class: 'bg-warning-subtle text-warning-emphasis border-warning-subtle' },
+        kulit: { label: '👜 Kerajinan Kulit, dsb.', class: 'bg-danger-subtle text-danger border-danger-subtle' },
+        elektronik: { label: '💡 Elektronik & IoT', class: 'bg-info-subtle text-info-emphasis border-info-subtle' },
+        jasa: { label: '💼 Jasa Profesional', class: 'bg-success-subtle text-success border-success-subtle' }
+    };
+    if (catMap[cat]) {
+        badge.textContent = catMap[cat].label;
+        badge.className = `badge border small ${catMap[cat].class}`;
+    } else {
+        badge.textContent = 'Sektor Belum Dipilih';
+        badge.className = 'badge bg-light text-secondary border small';
+    }
+}
+
+function removeProductImage() {
+    const preview = document.getElementById('ukmImagePreview');
+    if (preview) preview.src = '';
+    const previewBox = document.getElementById('ukmImagePreviewContainer');
+    if (previewBox) previewBox.classList.add('d-none');
+    const prompt = document.getElementById('dropzonePrompt');
+    if (prompt) prompt.classList.remove('d-none');
+    const quickBtns = document.getElementById('imageQuickButtons');
+    if (quickBtns) quickBtns.classList.add('d-none');
+    const fileInput = document.getElementById('inputUkmFile');
+    if (fileInput) fileInput.value = '';
+}
+
 function openAddUkmModal() {
     currentEditingProductId = null;
     document.getElementById('ukmModalTitle').textContent = 'Tambah Produk Baru ke Katalog';
     document.getElementById('ukmForm').reset();
-    document.getElementById('ukmImagePreview').src = '';
-    document.getElementById('ukmImagePreviewContainer').classList.add('d-none');
-    document.getElementById('dropzonePrompt')?.classList.remove('d-none');
+    removeProductImage();
+    updateModalCategoryBadge('');
     
     const modalEl = document.getElementById('ukmModal');
     const modal = new bootstrap.Modal(modalEl);
@@ -502,15 +532,25 @@ function openEditProductModal(id) {
     document.getElementById('ukmModalTitle').textContent = 'Edit Informasi Produk';
     document.getElementById('inputProductName').value = item.name;
     document.getElementById('inputProductCategory').value = item.category;
+    updateModalCategoryBadge(item.category);
     document.getElementById('inputProductPrice').value = (item.price || '').replace(/^Rp\s*/i, '');
     document.getElementById('inputProductPhone').value = item.phone || '';
     document.getElementById('inputProductSpecs').value = item.specs || '';
     document.getElementById('inputProductDesc').value = item.description || '';
 
     const preview = document.getElementById('ukmImagePreview');
-    preview.src = item.image;
-    document.getElementById('ukmImagePreviewContainer').classList.remove('d-none');
-    document.getElementById('dropzonePrompt')?.classList.add('d-none');
+    const previewBox = document.getElementById('ukmImagePreviewContainer');
+    const prompt = document.getElementById('dropzonePrompt');
+    const quickBtns = document.getElementById('imageQuickButtons');
+
+    if (item.image) {
+        preview.src = item.image;
+        if (previewBox) previewBox.classList.remove('d-none');
+        if (prompt) prompt.classList.add('d-none');
+        if (quickBtns) quickBtns.classList.remove('d-none');
+    } else {
+        removeProductImage();
+    }
 
     const modalEl = document.getElementById('ukmModal');
     const modal = new bootstrap.Modal(modalEl);
@@ -519,13 +559,25 @@ function openEditProductModal(id) {
 
 function handleImageFileSelect(input) {
     if (input.files && input.files[0]) {
+        const file = input.files[0];
+        if (file.size > 2 * 1024 * 1024) {
+            alert('Ukuran foto maksimal 2 MB agar performa katalog tetap cepat.');
+            input.value = '';
+            return;
+        }
         const reader = new FileReader();
         reader.onload = function(e) {
-            document.getElementById('ukmImagePreview').src = e.target.result;
-            document.getElementById('ukmImagePreviewContainer').classList.remove('d-none');
-            document.getElementById('dropzonePrompt')?.classList.add('d-none');
+            const preview = document.getElementById('ukmImagePreview');
+            const previewBox = document.getElementById('ukmImagePreviewContainer');
+            const prompt = document.getElementById('dropzonePrompt');
+            const quickBtns = document.getElementById('imageQuickButtons');
+
+            if (preview) preview.src = e.target.result;
+            if (previewBox) previewBox.classList.remove('d-none');
+            if (prompt) prompt.classList.add('d-none');
+            if (quickBtns) quickBtns.classList.remove('d-none');
         };
-        reader.readAsDataURL(input.files[0]);
+        reader.readAsDataURL(file);
     }
 }
 
@@ -568,8 +620,8 @@ function handleSaveProduct(event) {
     const catLabels = {
         makanan: 'Makanan & Minuman',
         kulit: 'Kerajinan Kulit, dsb.',
-        elektronik: 'Elektronik',
-        jasa: 'Jasa'
+        elektronik: 'Elektronik & IoT',
+        jasa: 'Jasa Profesional'
     };
 
     if (currentEditingProductId) {
@@ -721,50 +773,35 @@ function deletePost(id) {
 
 function applySiteBrandAndLogoToCms(settings) {
     if (!settings) settings = getSettingsData();
-    const brandName = settings.brandName || 'KATALOG CMS';
-    const logoUrl = settings.logoUrl || '';
-    const logoStyle = settings.logoStyle || 'circle';
+    const brandName = settings.brandName || 'UKM ENTREPRENEUR';
+    let logoUrl = settings.logoUrl || '';
 
     const sidebarBrandText = document.getElementById('sidebarBrandName');
     if (sidebarBrandText) sidebarBrandText.textContent = brandName;
 
     const logoImg = document.getElementById('sidebarLogoImg');
-    const logoIcon = document.getElementById('sidebarLogoIcon');
+    const fallbackIcon = document.getElementById('sidebarFallbackIcon');
 
     if (logoUrl && logoUrl.trim() !== '') {
-        if (logoImg) {
-            logoImg.src = logoUrl;
-            logoImg.classList.remove('d-none');
-            if (logoStyle === 'circle') {
-                logoImg.style.borderRadius = '50%';
-                logoImg.style.border = '2px solid #ffc800';
-                logoImg.style.padding = '1px';
-                logoImg.style.backgroundColor = '#ffffff';
-                logoImg.style.width = '36px';
-                logoImg.style.height = '36px';
-                logoImg.style.objectFit = 'cover';
-            } else if (logoStyle === 'rounded') {
-                logoImg.style.borderRadius = '8px';
-                logoImg.style.border = '2px solid #ffc800';
-                logoImg.style.padding = '1px';
-                logoImg.style.backgroundColor = '#ffffff';
-                logoImg.style.width = '36px';
-                logoImg.style.height = '36px';
-                logoImg.style.objectFit = 'cover';
-            } else {
-                logoImg.style.borderRadius = '0';
-                logoImg.style.border = 'none';
-                logoImg.style.padding = '0';
-                logoImg.style.backgroundColor = 'transparent';
-                logoImg.style.width = 'auto';
-                logoImg.style.height = '34px';
-                logoImg.style.objectFit = 'contain';
-            }
+        let src = logoUrl.trim();
+        // Normalisasi path relatif bila dipanggil dari direktori admin
+        if (!src.startsWith('../') && !src.startsWith('/') && !src.startsWith('data:') && !src.startsWith('http')) {
+            src = '../' + src;
         }
-        if (logoIcon) logoIcon.classList.add('d-none');
+        if (logoImg) {
+            logoImg.src = src;
+            logoImg.style.display = 'block';
+        }
+        if (fallbackIcon) {
+            fallbackIcon.style.display = 'none';
+        }
     } else {
-        if (logoImg) logoImg.classList.add('d-none');
-        if (logoIcon) logoIcon.classList.remove('d-none');
+        if (logoImg) {
+            logoImg.style.display = 'none';
+        }
+        if (fallbackIcon) {
+            fallbackIcon.style.display = 'flex';
+        }
     }
 }
 

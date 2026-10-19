@@ -20,13 +20,15 @@
         <!-- Sidebar Navigation -->
         <aside class="admin-sidebar">
             <a href="dashboard.html" class="sidebar-brand">
-                <div class="sidebar-brand-icon">
-                    <img id="sidebarLogoImg" src="" alt="Logo" class="d-none" style="height: 32px; max-width: 38px; object-fit: contain; border-radius: 6px;" />
-                    <i id="sidebarLogoIcon" class="fas fa-store"></i>
+                <div class="sidebar-brand-logo-badge">
+                    <img id="sidebarLogoImg" src="../assets/img/ui/logo-ukm.jpeg" alt="Logo UKM" class="sidebar-brand-img" onerror="this.style.display='none'; document.getElementById('sidebarFallbackIcon').style.display='flex';" />
+                    <div id="sidebarFallbackIcon" class="sidebar-fallback-icon" style="display: none;">
+                        <i class="fas fa-store"></i>
+                    </div>
                 </div>
-                <div>
-                    <div class="fw-bold leading-none" id="sidebarBrandName" style="font-size: 0.98rem; letter-spacing: -0.3px;">UKM CMS</div>
-                    <small class="text-muted" style="font-size: 0.68rem; font-weight: 500;">Panel Pengelola Produk</small>
+                <div class="sidebar-brand-text">
+                    <div class="sidebar-brand-name" id="sidebarBrandName">UKM ENTREPRENEUR</div>
+                    <div class="sidebar-brand-desc">Panel Pengelola Produk</div>
                 </div>
             </a>
 
@@ -624,91 +626,161 @@
     </div>
 
     <!-- ==================== MODAL TAMBAH / EDIT PRODUK ==================== -->
-    <div class="modal fade" id="ukmModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fas fa-box-open text-warning fa-lg"></i>
-                        <h5 class="modal-title fw-bold text-white mb-0" id="ukmModalTitle">Tambah Produk Baru</h5>
+    <div class="modal fade" id="ukmModal" tabindex="-1" aria-labelledby="ukmModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable ukm-modal-dialog">
+            <div class="modal-content border-0 shadow-2xl rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-bottom border-warning border-3 px-4 py-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="modal-icon-badge">
+                            <i class="fas fa-boxes-stacked text-warning"></i>
+                        </div>
+                        <div>
+                            <h5 class="modal-title fw-bold text-white mb-0" id="ukmModalTitle">Tambah Produk Baru</h5>
+                            <small class="text-white-50" style="font-size: 0.78rem;">Kelola foto produk, harga jual resmi, spesifikasi teknis, dan direct WhatsApp</small>
+                        </div>
                     </div>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="ukmForm" onsubmit="handleSaveProduct(event)">
-                    <div class="modal-body">
+                    <div class="modal-body p-4 bg-white">
                         <div class="row g-4">
-                            <!-- Kolom Kiri: Upload Foto Produk -->
-                            <div class="col-md-5">
-                                <label class="form-label">Foto Produk *</label>
-                                <div class="image-upload-dropzone mb-2" onclick="document.getElementById('inputUkmFile').click()">
-                                    <div id="ukmImagePreviewContainer" class="d-none mb-2">
-                                        <img id="ukmImagePreview" src="" alt="Preview Produk" class="img-fluid rounded-3 shadow-xs" style="max-height: 180px; width: 100%; object-fit: cover;" />
+                            <!-- Kolom Kiri: Foto Produk, Pratinjau & Sektor -->
+                            <div class="col-lg-5 col-md-5">
+                                <div class="modal-media-panel h-100 d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                        <label class="form-label fw-bold text-dark mb-0 small">
+                                            <i class="fas fa-camera text-warning me-1"></i> Foto Produk <span class="text-danger">*</span>
+                                        </label>
+                                        <span class="badge bg-light text-secondary border small" id="modalPreviewCategoryBadge">Sektor Belum Dipilih</span>
                                     </div>
-                                    <div id="dropzonePrompt">
-                                        <i class="fas fa-cloud-upload-alt text-warning fa-3x mb-2 d-block"></i>
-                                        <div class="fw-bold small text-dark">Klik untuk Pilih Foto</div>
-                                        <div class="text-muted" style="font-size: 0.72rem;">PNG, JPG, WebP (Rasio 1:1 direkomendasikan)</div>
-                                    </div>
-                                    <input type="file" id="inputUkmFile" class="d-none" accept="image/*" onchange="handleImageFileSelect(this)" />
-                                </div>
-                                <small class="text-muted d-block" style="font-size: 0.74rem;">
-                                    Foto yang menarik dan beresolusi jelas meningkatkan minat calon pembeli.
-                                </small>
-                            </div>
 
-                            <!-- Kolom Kanan: Rincian Produk -->
-                            <div class="col-md-7">
-                                <div class="mb-3">
-                                    <label class="form-label">Nama Produk *</label>
-                                    <input type="text" id="inputProductName" class="form-control" required placeholder="Contoh: Dompet Kulit Bifold Slim Handstitched" />
-                                </div>
+                                    <!-- Dropzone & Preview Container -->
+                                    <div class="product-dropzone-wrap mb-3 position-relative" id="productDropzoneWrap">
+                                        <div id="dropzonePrompt" class="product-dropzone-prompt" onclick="document.getElementById('inputUkmFile').click()">
+                                            <div class="dropzone-icon-circle">
+                                                <i class="fas fa-cloud-arrow-up text-warning"></i>
+                                            </div>
+                                            <div class="fw-bold text-dark mt-2" style="font-size: 0.9rem;">Klik untuk Unggah Foto</div>
+                                            <div class="text-muted small mt-1">PNG, JPG, WebP (Maks. 2MB)</div>
+                                            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle mt-2">
+                                                <i class="fas fa-crop me-1"></i> Rasio 1:1 Persegi Direkomendasikan
+                                            </span>
+                                        </div>
 
-                                <div class="row g-2 mb-3">
-                                    <div class="col-sm-6">
-                                        <label class="form-label">Sektor Usaha *</label>
-                                        <select id="inputProductCategory" class="form-select" required>
-                                            <option value="" disabled selected>Pilih Sektor</option>
-                                            <option value="makanan">Makanan & Minuman</option>
-                                            <option value="kulit">Kerajinan Kulit, dsb.</option>
-                                            <option value="elektronik">Elektronik & IoT</option>
-                                            <option value="jasa">Jasa Profesional</option>
-                                        </select>
+                                        <div id="ukmImagePreviewContainer" class="product-preview-box d-none">
+                                            <img id="ukmImagePreview" src="" alt="Preview Produk" class="product-preview-img" />
+                                            <div class="product-preview-overlay">
+                                                <button type="button" class="btn btn-sm btn-light shadow-sm fw-bold me-2" onclick="document.getElementById('inputUkmFile').click()">
+                                                    <i class="fas fa-camera text-warning me-1"></i> Ganti Foto
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-danger shadow-sm fw-bold" onclick="removeProductImage()">
+                                                    <i class="fas fa-trash-alt me-1"></i> Hapus
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <input type="file" id="inputUkmFile" class="d-none" accept="image/*" onchange="handleImageFileSelect(this)" />
                                     </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label">Harga Satuan *</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text">Rp</span>
-                                            <input type="text" id="inputProductPrice" class="form-control" required placeholder="85.000" />
+
+                                    <!-- Action Buttons below preview when image is active -->
+                                    <div id="imageQuickButtons" class="d-none justify-content-between align-items-center mb-3">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary w-50 me-1" onclick="document.getElementById('inputUkmFile').click()">
+                                            <i class="fas fa-sync-alt me-1"></i> Pilih Foto Lain
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger w-50 ms-1" onclick="removeProductImage()">
+                                            <i class="fas fa-trash-alt me-1"></i> Kosongkan
+                                        </button>
+                                    </div>
+
+                                    <!-- Helpful Tips Box -->
+                                    <div class="modal-tips-card p-3 rounded-3 mt-auto">
+                                        <div class="d-flex align-items-start gap-2">
+                                            <i class="fas fa-lightbulb text-warning mt-1"></i>
+                                            <div class="small text-muted" style="font-size: 0.76rem; line-height: 1.45;">
+                                                <strong class="text-dark d-block mb-1">Panduan Foto Katalog:</strong>
+                                                Gunakan foto produk dengan latar belakang rapi, bersih, dan terang. Foto berkualitas tinggi meningkatkan kepercayaan pembeli di web publik.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label">WhatsApp Pemesanan *</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="fab fa-whatsapp text-success"></i> +</span>
-                                        <input type="text" id="inputProductPhone" class="form-control" required placeholder="6283850386401" />
+                            <!-- Kolom Kanan: Rincian Produk -->
+                            <div class="col-lg-7 col-md-7">
+                                <div class="modal-form-panel">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold text-dark small mb-1">
+                                            Nama Produk Komersial <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" id="inputProductName" class="form-control form-control-modal" required placeholder="Contoh: Dompet Kulit Bifold Slim Handstitched" />
+                                        <small class="text-muted" style="font-size: 0.72rem;">Judul utama produk yang dicari calon pembeli pada katalog web.</small>
                                     </div>
-                                    <small class="text-muted" style="font-size: 0.72rem;">Format internasional tanpa tanda plus (contoh: 628...)</small>
-                                </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label">Spesifikasi / Bahan Singkat *</label>
-                                    <input type="text" id="inputProductSpecs" class="form-control" required placeholder="Contoh: Kulit Sapi Pull-Up Asli, 6 Slot Kartu, Dimensi 11x9 cm" />
-                                </div>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-sm-6">
+                                            <label class="form-label fw-bold text-dark small mb-1">
+                                                Sektor Usaha <span class="text-danger">*</span>
+                                            </label>
+                                            <select id="inputProductCategory" class="form-select form-control-modal" required onchange="updateModalCategoryBadge(this.value)">
+                                                <option value="" disabled selected>Pilih Sektor Usaha</option>
+                                                <option value="makanan">🍽️ Makanan & Minuman</option>
+                                                <option value="kulit">👜 Kerajinan Kulit, dsb.</option>
+                                                <option value="elektronik">💡 Elektronik & IoT</option>
+                                                <option value="jasa">💼 Jasa Profesional</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label fw-bold text-dark small mb-1">
+                                                Harga Satuan Resmi <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light fw-bold text-secondary">Rp</span>
+                                                <input type="text" id="inputProductPrice" class="form-control form-control-modal" required placeholder="85.000" />
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <div class="mb-0">
-                                    <label class="form-label">Deskripsi Lengkap Produk *</label>
-                                    <textarea id="inputProductDesc" class="form-control" rows="3" required placeholder="Jelaskan keunggulan produk, varian rasa/warna, manfaat, atau cara pemakaian..."></textarea>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold text-dark small mb-1">
+                                            Nomor WhatsApp Pemesanan Langsung <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-success-subtle text-success border-success-subtle fw-bold">
+                                                <i class="fab fa-whatsapp me-1"></i> +
+                                            </span>
+                                            <input type="text" id="inputProductPhone" class="form-control form-control-modal" required placeholder="6283850386401" />
+                                        </div>
+                                        <small class="text-muted" style="font-size: 0.72rem;">Gunakan format internasional tanpa spasi/tanda plus (contoh: 6283850386401).</small>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold text-dark small mb-1">
+                                            Spesifikasi Teknis / Dimensi / Bahan <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" id="inputProductSpecs" class="form-control form-control-modal" required placeholder="Contoh: Kulit Sapi Pull-Up Asli, 6 Slot Kartu, Dimensi 11x9 cm" />
+                                        <small class="text-muted" style="font-size: 0.72rem;">Poin spesifikasi penting yang ditampilkan tepat di bawah nama produk.</small>
+                                    </div>
+
+                                    <div class="mb-0">
+                                        <label class="form-label fw-bold text-dark small mb-1">
+                                            Deskripsi Lengkap Produk <span class="text-danger">*</span>
+                                        </label>
+                                        <textarea id="inputProductDesc" class="form-control form-control-modal" rows="3" required placeholder="Jelaskan keunggulan produk, varian rasa/warna, manfaat, atau cara pemakaian..."></textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary btn-sm fw-semibold px-3" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-warning fw-bold px-4 shadow-sm">
-                            <i class="fas fa-save me-1"></i> Simpan Produk
-                        </button>
+                    <div class="modal-footer bg-light px-4 py-3 d-flex justify-content-between align-items-center">
+                        <div class="text-muted small">
+                            <span class="text-danger fw-bold">*</span> Wajib diisi dengan informasi yang valid
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button" class="btn btn-outline-secondary btn-sm fw-semibold px-3" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-warning fw-bold px-4 shadow-sm d-flex align-items-center gap-2">
+                                <i class="fas fa-check-circle"></i> <span>Simpan Produk</span>
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -716,25 +788,34 @@
     </div>
 
     <!-- ==================== MODAL TULIS POSTINGAN ==================== -->
-    <div class="modal fade" id="postModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fas fa-pen text-warning fa-lg"></i>
-                        <h5 class="modal-title fw-bold text-white mb-0" id="postModalTitle">Tulis Artikel / Berita Baru</h5>
+            <div class="modal-content border-0 shadow-2xl rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-bottom border-warning border-3 px-4 py-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="modal-icon-badge">
+                            <i class="fas fa-pen-nib text-warning"></i>
+                        </div>
+                        <div>
+                            <h5 class="modal-title fw-bold text-white mb-0" id="postModalTitle">Tulis Artikel / Berita Baru</h5>
+                            <small class="text-white-50" style="font-size: 0.78rem;">Publikasikan wawasan wirausaha, liputan produk, dan berita industri</small>
+                        </div>
                     </div>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="postForm" onsubmit="handleSavePost(event)">
-                    <div class="modal-body">
+                    <div class="modal-body p-4 bg-white">
                         <div class="mb-3">
-                            <label class="form-label">Judul Artikel / Berita *</label>
-                            <input type="text" id="inputPostTitle" class="form-control" required placeholder="Contoh: Peluang Ekspor Produk Olahan Makanan Lokal ke Pasar Global" />
+                            <label class="form-label fw-bold text-dark small mb-1">
+                                Judul Artikel / Berita <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" id="inputPostTitle" class="form-control form-control-modal" required placeholder="Contoh: Peluang Ekspor Produk Olahan Makanan Lokal ke Pasar Global 2026" />
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Kategori Sektor *</label>
-                            <select id="inputPostCategory" class="form-select" required>
+                            <label class="form-label fw-bold text-dark small mb-1">
+                                Kategori Sektor Terkait <span class="text-danger">*</span>
+                            </label>
+                            <select id="inputPostCategory" class="form-select form-control-modal" required>
                                 <option value="Umum & Bisnis">Umum & Bisnis</option>
                                 <option value="Makanan & Minuman">Makanan & Minuman</option>
                                 <option value="Kerajinan Kulit, dsb.">Kerajinan Kulit, dsb.</option>
@@ -743,15 +824,22 @@
                             </select>
                         </div>
                         <div class="mb-0">
-                            <label class="form-label">Isi Konten Artikel *</label>
-                            <textarea id="inputPostContent" class="form-control" rows="6" required placeholder="Tuliskan berita, tips bisnis, atau liputan kegiatan usaha di sini..."></textarea>
+                            <label class="form-label fw-bold text-dark small mb-1">
+                                Isi Konten Artikel / Siaran Berita <span class="text-danger">*</span>
+                            </label>
+                            <textarea id="inputPostContent" class="form-control form-control-modal" rows="6" required placeholder="Tuliskan ulasan berita, tips bisnis, atau liputan kegiatan usaha di sini..."></textarea>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary btn-sm fw-semibold px-3" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-warning fw-bold px-4 shadow-sm">
-                            <i class="fas fa-paper-plane me-1"></i> Terbitkan Artikel
-                        </button>
+                    <div class="modal-footer bg-light px-4 py-3 d-flex justify-content-between align-items-center">
+                        <div class="text-muted small">
+                            <span class="text-danger fw-bold">*</span> Artikel akan langsung tayang pada halaman publik
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button" class="btn btn-outline-secondary btn-sm fw-semibold px-3" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-warning fw-bold px-4 shadow-sm d-flex align-items-center gap-2">
+                                <i class="fas fa-paper-plane"></i> <span>Terbitkan Artikel</span>
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
