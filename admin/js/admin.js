@@ -277,6 +277,20 @@ function initNavigation() {
     });
 }
 
+let activeCategoryPill = 'all';
+
+function setCategoryPill(cat) {
+    activeCategoryPill = cat;
+    document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    renderProductTable();
+}
+
 function renderOverviewStats() {
     const products = getProductData();
     const posts = getPostsData();
@@ -286,12 +300,81 @@ function renderOverviewStats() {
         if (el) el.textContent = val;
     };
 
-    setVal('statTotalUkm', products.length);
-    setVal('statMakanan', products.filter(u => u.category === 'makanan').length);
-    setVal('statKulit', products.filter(u => u.category === 'kulit').length);
-    setVal('statElektronik', products.filter(u => u.category === 'elektronik').length);
-    setVal('statJasa', products.filter(u => u.category === 'jasa').length);
+    const countAll = products.length;
+    const countMakanan = products.filter(u => u.category === 'makanan').length;
+    const countKulit = products.filter(u => u.category === 'kulit').length;
+    const countElektronik = products.filter(u => u.category === 'elektronik').length;
+    const countJasa = products.filter(u => u.category === 'jasa').length;
+
+    setVal('statTotalUkm', countAll);
+    setVal('statMakanan', countMakanan);
+    setVal('statKulit', countKulit);
+    setVal('statElektronik', countElektronik);
+    setVal('statJasa', countJasa);
     setVal('statTotalPosts', posts.length);
+
+    // Sidebar Counters
+    setVal('sidebarProductCount', countAll);
+    setVal('sidebarPostsCount', posts.length);
+
+    // Pill Badges in Product Section
+    setVal('pillCountAll', countAll);
+    setVal('pillCountMakanan', countMakanan);
+    setVal('pillCountKulit', countKulit);
+    setVal('pillCountElektronik', countElektronik);
+    setVal('pillCountJasa', countJasa);
+
+    renderOverviewRecentProducts(products);
+}
+
+function renderOverviewRecentProducts(products) {
+    const tbody = document.getElementById('overviewRecentProductsBody');
+    if (!tbody) return;
+
+    tbody.innerHTML = '';
+    const recent = products.slice(0, 4);
+
+    if (recent.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-muted">Belum ada produk di katalog.</td></tr>`;
+        return;
+    }
+
+    const catBadgeClasses = {
+        makanan: 'cat-pill-makanan',
+        kulit: 'cat-pill-kulit',
+        elektronik: 'cat-pill-elektronik',
+        jasa: 'cat-pill-jasa'
+    };
+
+    recent.forEach((item, index) => {
+        const pillClass = catBadgeClasses[item.category] || 'cat-pill-makanan';
+        let imgPath = item.image || '../assets/img/ukm/makanan-1.jpg';
+        if (!imgPath.startsWith('../') && !imgPath.startsWith('data:') && !imgPath.startsWith('http')) {
+            imgPath = '../' + imgPath;
+        }
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td class="text-center text-muted fw-bold small">#${index + 1}</td>
+            <td>
+                <div class="d-flex align-items-center gap-3">
+                    <img src="${imgPath}" alt="${item.name}" class="table-thumbnail" onerror="this.src='../assets/img/ukm/makanan-1.jpg'" />
+                    <div>
+                        <div class="product-table-title">${item.name}</div>
+                        <div class="product-table-specs"><i class="fas fa-tag me-1 text-warning"></i>${item.specs ? (item.specs.length > 55 ? item.specs.substring(0, 55) + '...' : item.specs) : '-'}</div>
+                    </div>
+                </div>
+            </td>
+            <td><span class="cat-pill ${pillClass}">${item.categoryLabel || item.category}</span></td>
+            <td><span class="table-price">${item.price || 'Rp -'}</span></td>
+            <td>
+                <a href="https://wa.me/${item.phone}" target="_blank" class="wa-table-link">
+                    <i class="fab fa-whatsapp"></i> +${item.phone}
+                </a>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
 }
 
 // ==================== PRODUCT CRUD ====================
@@ -301,19 +384,36 @@ function renderProductTable() {
     const tbody = document.getElementById('ukmTableBody');
     if (!tbody) return;
 
-    const searchVal = (document.getElementById('searchUkmInput')?.value || '').toLowerCase();
-    const filterCat = document.getElementById('filterUkmSelect')?.value || 'all';
+    const searchVal = (document.getElementById('searchUkmInput')?.value || '').toLowerCase().trim();
+    const sortBy = document.getElementById('sortProductSelect')?.value || 'newest';
 
     tbody.innerHTML = '';
 
-    const filtered = products.filter(item => {
-        const matchesCat = (filterCat === 'all' || item.category === filterCat);
+    let filtered = products.filter(item => {
+        const matchesCat = (activeCategoryPill === 'all' || item.category === activeCategoryPill);
         const matchesSearch = (searchVal === '' || 
                                item.name.toLowerCase().includes(searchVal) || 
                                (item.specs && item.specs.toLowerCase().includes(searchVal)) ||
                                (item.price && item.price.toLowerCase().includes(searchVal)));
         return matchesCat && matchesSearch;
     });
+
+    // Apply Sorting
+    if (sortBy === 'price-asc') {
+        filtered.sort((a, b) => {
+            const numA = parseInt((a.price || '0').replace(/\D/g, '')) || 0;
+            const numB = parseInt((b.price || '0').replace(/\D/g, '')) || 0;
+            return numA - numB;
+        });
+    } else if (sortBy === 'price-desc') {
+        filtered.sort((a, b) => {
+            const numA = parseInt((a.price || '0').replace(/\D/g, '')) || 0;
+            const numB = parseInt((b.price || '0').replace(/\D/g, '')) || 0;
+            return numB - numA;
+        });
+    } else if (sortBy === 'name-asc') {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+    }
 
     const countBadge = document.getElementById('productCountBadge');
     if (countBadge) {
@@ -322,8 +422,9 @@ function renderProductTable() {
 
     if (filtered.length === 0) {
         tbody.innerHTML = `<tr><td colspan="6" class="text-center py-5 text-muted">
-            <i class="fas fa-box-open fa-2x mb-2 d-block text-secondary opacity-50"></i>
-            Tidak ada produk yang sesuai dengan filter atau pencarian.
+            <i class="fas fa-box-open fa-3x mb-3 d-block text-secondary opacity-50"></i>
+            <div class="fw-bold fs-6 text-dark mb-1">Tidak Ada Produk yang Sesuai</div>
+            <small class="text-muted">Coba ubah kata kunci pencarian atau pilih sektor usaha lainnya.</small>
         </td></tr>`;
         return;
     }
@@ -357,7 +458,7 @@ function renderProductTable() {
             <td><span class="cat-pill ${pillClass}">${item.categoryLabel || item.category}</span></td>
             <td><span class="table-price">${item.price || 'Rp -'}</span></td>
             <td>
-                <a href="https://wa.me/${item.phone}" target="_blank" class="wa-table-link">
+                <a href="https://wa.me/${item.phone}" target="_blank" class="wa-table-link" title="Klik untuk uji chat WhatsApp">
                     <i class="fab fa-whatsapp"></i> +${item.phone}
                 </a>
             </td>
@@ -385,6 +486,7 @@ function openAddUkmModal() {
     document.getElementById('ukmForm').reset();
     document.getElementById('ukmImagePreview').src = '';
     document.getElementById('ukmImagePreviewContainer').classList.add('d-none');
+    document.getElementById('dropzonePrompt')?.classList.remove('d-none');
     
     const modalEl = document.getElementById('ukmModal');
     const modal = new bootstrap.Modal(modalEl);
@@ -400,7 +502,7 @@ function openEditProductModal(id) {
     document.getElementById('ukmModalTitle').textContent = 'Edit Informasi Produk';
     document.getElementById('inputProductName').value = item.name;
     document.getElementById('inputProductCategory').value = item.category;
-    document.getElementById('inputProductPrice').value = item.price || '';
+    document.getElementById('inputProductPrice').value = (item.price || '').replace(/^Rp\s*/i, '');
     document.getElementById('inputProductPhone').value = item.phone || '';
     document.getElementById('inputProductSpecs').value = item.specs || '';
     document.getElementById('inputProductDesc').value = item.description || '';
@@ -408,6 +510,7 @@ function openEditProductModal(id) {
     const preview = document.getElementById('ukmImagePreview');
     preview.src = item.image;
     document.getElementById('ukmImagePreviewContainer').classList.remove('d-none');
+    document.getElementById('dropzonePrompt')?.classList.add('d-none');
 
     const modalEl = document.getElementById('ukmModal');
     const modal = new bootstrap.Modal(modalEl);
@@ -420,9 +523,20 @@ function handleImageFileSelect(input) {
         reader.onload = function(e) {
             document.getElementById('ukmImagePreview').src = e.target.result;
             document.getElementById('ukmImagePreviewContainer').classList.remove('d-none');
+            document.getElementById('dropzonePrompt')?.classList.add('d-none');
         };
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+// Subtab switcher for Settings
+function switchSettingsTab(tabId, btn) {
+    document.querySelectorAll('.settings-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.settings-tab-pane').forEach(p => p.classList.remove('active'));
+    
+    btn.classList.add('active');
+    const pane = document.getElementById(tabId);
+    if (pane) pane.classList.add('active');
 }
 
 function handleSaveProduct(event) {
