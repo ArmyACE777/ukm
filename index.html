@@ -1530,7 +1530,7 @@
         // 4. Integrasi Pengaturan Website Dinamis (CMS Settings)
         const DEFAULT_SITE_SETTINGS = {
             brandName: "UKM ENTREPRENEUR",
-            logoUrl: "",
+            logoUrl: "assets/img/ui/logo-ukm.jpeg",
             logoStyle: "circle",
             tagline: "Etalase Inovasi & Produk Usaha Mandiri",
             headline: "KATALOG PRODUK UNGGULAN",
@@ -1565,9 +1565,14 @@
             const logoIcon = document.getElementById('siteLogoIcon');
             const footerLogo = document.getElementById('footerLogoImg');
 
-            if (s.logoUrl && s.logoUrl.trim() !== '') {
+            let finalLogoUrl = s.logoUrl || '';
+            if (finalLogoUrl.startsWith('../')) {
+                finalLogoUrl = finalLogoUrl.substring(3);
+            }
+
+            if (finalLogoUrl && finalLogoUrl.trim() !== '') {
                 if (logoImg) {
-                    logoImg.src = s.logoUrl;
+                    logoImg.src = finalLogoUrl;
                     logoImg.classList.remove('d-none');
                     // Terapkan gaya bentuk logo yang dipilih di CMS
                     logoImg.className = '';
@@ -1582,7 +1587,7 @@
                 }
                 if (logoIcon) logoIcon.classList.add('d-none');
                 if (footerLogo) {
-                    footerLogo.src = s.logoUrl;
+                    footerLogo.src = finalLogoUrl;
                     footerLogo.classList.remove('d-none');
                     if ((s.logoStyle || 'circle') === 'circle') {
                         footerLogo.style.borderRadius = '50%';

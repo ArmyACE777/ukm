@@ -182,7 +182,7 @@ function savePostsData(data) {
 // 3. Data Default Pengaturan Website (Identitas, Kontak, Lokasi & Medsos)
 const DEFAULT_SETTINGS = {
     brandName: "UKM ENTREPRENEUR",
-    logoUrl: "",
+    logoUrl: "../assets/img/ui/logo-ukm.jpeg",
     logoStyle: "circle",
     tagline: "Etalase Inovasi & Produk Usaha Mandiri",
     headline: "KATALOG PRODUK UNGGULAN",

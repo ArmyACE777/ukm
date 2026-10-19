@@ -115,14 +115,13 @@
 
         // Sinkronisasi Logo & Nama Brand dari CMS
         const rawSettings = localStorage.getItem('ukm_site_settings');
-        if (rawSettings) {
-            try {
-                const s = JSON.parse(rawSettings);
-                if (s.brandName) {
-                    const brandEl = document.getElementById('loginBrandName');
-                    if (brandEl) brandEl.textContent = s.brandName;
-                    document.title = `${s.brandName} - Login Panel CMS`;
-                }
+        const s = rawSettings ? JSON.parse(rawSettings) : { brandName: 'UKM ENTREPRENEUR', logoUrl: '../assets/img/ui/logo-ukm.jpeg', logoStyle: 'circle' };
+        try {
+            if (s.brandName) {
+                const brandEl = document.getElementById('loginBrandName');
+                if (brandEl) brandEl.textContent = s.brandName;
+                document.title = `${s.brandName} - Login Panel CMS`;
+            }
                 if (s.logoUrl && s.logoUrl.trim() !== '') {
                     const img = document.getElementById('loginLogoImg');
                     const icon = document.getElementById('loginLogoIcon');

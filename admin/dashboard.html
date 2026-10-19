@@ -79,6 +79,7 @@
                 </div>
             </div>
         </aside>
+        <div class="sidebar-backdrop" onclick="document.querySelector('.admin-sidebar').classList.remove('show')"></div>
 
         <!-- Main Content Area -->
         <main class="admin-main">
@@ -124,8 +125,8 @@
                     </div>
 
                     <!-- Stat Widgets (5 Columns Grid) -->
-                    <div class="row g-3 mb-4">
-                        <div class="col-xl col-md-4 col-sm-6">
+                    <div class="row g-3 mb-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5">
+                        <div class="col">
                             <div class="stat-widget warning h-100">
                                 <div>
                                     <div class="text-muted small fw-bold text-uppercase">Total Produk</div>
@@ -135,7 +136,7 @@
                                 <div class="stat-icon warning"><i class="fas fa-boxes-stacked"></i></div>
                             </div>
                         </div>
-                        <div class="col-xl col-md-4 col-sm-6">
+                        <div class="col">
                             <div class="stat-widget warning h-100">
                                 <div>
                                     <div class="text-muted small fw-bold text-uppercase">Makanan & Minuman</div>
@@ -145,7 +146,7 @@
                                 <div class="stat-icon warning"><i class="fas fa-utensils"></i></div>
                             </div>
                         </div>
-                        <div class="col-xl col-md-4 col-sm-6">
+                        <div class="col">
                             <div class="stat-widget danger h-100">
                                 <div>
                                     <div class="text-muted small fw-bold text-uppercase">Kerajinan Kulit</div>
@@ -155,7 +156,7 @@
                                 <div class="stat-icon danger"><i class="fas fa-wallet"></i></div>
                             </div>
                         </div>
-                        <div class="col-xl col-md-6 col-sm-6">
+                        <div class="col">
                             <div class="stat-widget info h-100">
                                 <div>
                                     <div class="text-muted small fw-bold text-uppercase">Elektronik & IoT</div>
@@ -165,7 +166,7 @@
                                 <div class="stat-icon info"><i class="fas fa-microchip"></i></div>
                             </div>
                         </div>
-                        <div class="col-xl col-md-6 col-sm-6">
+                        <div class="col">
                             <div class="stat-widget success h-100">
                                 <div>
                                     <div class="text-muted small fw-bold text-uppercase">Jasa Profesional</div>
@@ -624,7 +625,7 @@
 
     <!-- ==================== MODAL TAMBAH / EDIT PRODUK ==================== -->
     <div class="modal fade" id="ukmModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="d-flex align-items-center gap-2">
@@ -716,7 +717,7 @@
 
     <!-- ==================== MODAL TULIS POSTINGAN ==================== -->
     <div class="modal fade" id="postModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="d-flex align-items-center gap-2">
