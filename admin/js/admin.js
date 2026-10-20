@@ -5,102 +5,126 @@
  * ========================================================
  */
 
-// 1. Data Default Produk Katalog (8 Produk dari 4 Sektor Usaha)
+// 1. Data Default Produk Katalog (8 Produk dari 4 Sektor Usaha - Model Distributor Terpadu)
 const DEFAULT_PRODUCTS = [
     {
         id: "prod-1",
         name: "Sambal Bawang Goreng Gurih (Botol 200g)",
+        producer: "Dapur Sambal Bu Lastri (Mitra Binaan Brebes)",
         category: "makanan",
         categoryLabel: "Makanan & Minuman",
         price: "Rp 35.000",
+        wholesale: "Min. 12 botol: Rp 28.000/btl (Grosir Reseller)",
+        stockStatus: "ready",
         phone: "6283850386401",
         image: "../assets/img/ukm/makanan-1.jpg",
         specs: "Isi: 200g, Botol Kaca Food-Grade, Halal ID3211, Tahan 6 Bulan",
-        description: "Sambal olahan cabai rawit merah segar dan bawang merah Brebes pilihan dengan minyak kelapa murni. Cocok sebagai teman nasi hangat tanpa bahan pengawet kimia.",
+        description: "Sambal olahan cabai rawit merah segar dan bawang merah Brebes pilihan dari petani binaan dengan minyak kelapa murni. Didistribusikan resmi dengan standar higienis tanpa bahan pengawet kimia.",
         status: "active"
     },
     {
         id: "prod-2",
         name: "Dompet Kulit Bifold Slim Handstitched",
+        producer: "Sentra Kriya Kulit Sukaregang Garut (Mitra Pengrajin)",
         category: "kulit",
         categoryLabel: "Kerajinan Kulit, dsb.",
         price: "Rp 85.000",
+        wholesale: "Min. 6 pcs: Rp 70.000/pcs (Grosir Toko)",
+        stockStatus: "ready",
         phone: "6283850386401",
         image: "../assets/img/ukm/kulit-1.jpg",
         specs: "Bahan: Kulit Sapi Pull-Up Asli, 6 Slot Kartu, Jahit Tangan (Saddle Stitch)",
-        description: "Dompet saku pria berdesain tipis minimalis dari kulit sapi samak Garut. Tekstur lentur dengan efek patina alami yang semakin mengkilap seiring waktu.",
+        description: "Dompet saku pria berdesain tipis minimalis langsung dari penyamak kulit Garut mitra binaan. Tekstur lentur dengan efek patina alami yang semakin mengkilap seiring waktu.",
         status: "active"
     },
     {
         id: "prod-3",
         name: "Modul Smart Relay ESP32 IoT 4-Channel",
+        producer: "Polijati IoT & Hardware Tech Lab (Inovator Binaan)",
         category: "elektronik",
-        categoryLabel: "Elektronik",
+        categoryLabel: "Elektronik & IoT",
         price: "Rp 145.000",
+        wholesale: "Min. 5 unit: Rp 125.000/unit (Paket Lab/Proyek)",
+        stockStatus: "ready",
         phone: "6283850386401",
         image: "../assets/img/ukm/elektronik-1.jpg",
         specs: "Tegangan: 5V/12V DC, WiFi & Bluetooth, Kompatibel Android/iOS, PCB Gold Plate",
-        description: "Perangkat kontroler otomasi pintar untuk menyalakan/mematikan lampu, pompa air, dan mesin produksi dari aplikasi smartphone secara nirkabel.",
+        description: "Perangkat kontroler otomasi pintar karya technopreneur binaan untuk otomasi rumah dan industri kecil. Dikurasi dan didistribusikan dengan jaminan garansi penggantian unit.",
         status: "active"
     },
     {
         id: "prod-4",
         name: "Paket Foto Katalog Produk Komersial",
+        producer: "Studio Visual & Digital Kreatif Nusantara",
         category: "jasa",
-        categoryLabel: "Jasa",
+        categoryLabel: "Jasa Profesional",
         price: "Rp 350.000",
+        wholesale: "Paket 3 Produk: Diskon 15% (Pengadaan Usaha)",
+        stockStatus: "ready",
         phone: "6283850386401",
         image: "../assets/img/ukm/jasa-1.jpg",
         specs: "10 Foto High-Res Edit, Styling Studio, Hak Cipta Komersial, Format E-Commerce",
-        description: "Jasa foto profesional untuk kemasan makanan, produk kriya, atau pakaian agar tampil elegan di Shopee, Tokopedia, Instagram, dan website katalog.",
+        description: "Layanan jasa fotografi terkurasi dari jejaring fotografer komersial binaan UKM. Dirancang untuk kemasan makanan, kriya, dan fashion agar tampil profesional di seluruh kanal digital.",
         status: "active"
     },
     {
         id: "prod-5",
         name: "Cold Brew Arabika Gayo Petik Merah (Botol 250ml)",
+        producer: "Koperasi Tani Kopi Gayo Takengon (Mitra Binaan)",
         category: "makanan",
         categoryLabel: "Makanan & Minuman",
         price: "Rp 28.000",
+        wholesale: "Min. 24 botol: Rp 22.000/btl (Pasokan Kafe/Resto)",
+        stockStatus: "ready",
         phone: "6283850386401",
         image: "../assets/img/ukm/makanan-2.jpg",
         specs: "Komposisi: 100% Arabika Gayo Natural, Ekstraksi 18 Jam, Botol Kaca Amber",
-        description: "Kopi seduh dingin dengan cita rasa buah plum manis dan keasaman seimbang. Aman untuk lambung dan siap dinikmati kapan saja.",
+        description: "Kopi seduh dingin artisan langsung dari petani kopi dataran tinggi Gayo. Ekstraksi dingin 18 jam dengan cita rasa plum manis alami dan aman di lambung.",
         status: "active"
     },
     {
         id: "prod-6",
         name: "Ikat Pinggang Kulit Asli Gesper Kuningan Tempa",
+        producer: "Atelier Sabuk Kulit Tradisional Garut",
         category: "kulit",
         categoryLabel: "Kerajinan Kulit, dsb.",
         price: "Rp 120.000",
+        wholesale: "Min. 10 pcs: Rp 95.000/pcs (Grosir Butik)",
+        stockStatus: "ready",
         phone: "6283850386401",
         image: "../assets/img/ukm/kulit-2.jpg",
         specs: "Lebar: 3.8 cm, Tebal: 4 mm, Solid Brass Buckle, Aksesori Kain Batik Halus",
-        description: "Sabuk pria berkarakter kokoh dari kulit sapi nabati tebal satu lapis tanpa lem. Dilengkapi gesper kuningan murni antik yang tidak berkarat.",
+        description: "Sabuk pria berkarakter kokoh dari kulit sapi nabati tebal satu lapis tanpa lem. Dilengkapi gesper kuningan murni antik yang tidak berkarat seumur hidup.",
         status: "active"
     },
     {
         id: "prod-7",
         name: "Sensor Kelembaban Tanah Surya & Irigasi Otomatis",
+        producer: "Agritech Mandiri Polijati (Inovator Binaan)",
         category: "elektronik",
-        categoryLabel: "Elektronik",
+        categoryLabel: "Elektronik & IoT",
         price: "Rp 275.000",
+        wholesale: "Min. 3 paket: Rp 240.000/set (Kelompok Tani)",
+        stockStatus: "preorder",
         phone: "6283850386401",
         image: "../assets/img/ukm/elektronik-2.jpg",
         specs: "Tenaga: Solar Panel 5W + Baterai 18650, Sensor Kapasitif Anti-Karat, Solenoid Valve 12V",
-        description: "Alat penyiram tanaman otomatis untuk kebun hidroponik atau greenhouse. Menyiram sendiri saat tanah mulai kering tanpa perlu menarik kabel listrik.",
+        description: "Sistem otomasi irigasi pertanian karya inovator agritech lokal. Bekerja mandiri dengan tenaga surya untuk kebun dan greenhouse tanpa kabel listrik luar.",
         status: "active"
     },
     {
         id: "prod-8",
         name: "Jasa Deep Cleaning & Recoloring Tas/Sepatu Kulit",
+        producer: "Leather Care Specialist Workshop Bandung",
         category: "jasa",
-        categoryLabel: "Jasa",
+        categoryLabel: "Jasa Profesional",
         price: "Rp 75.000",
+        wholesale: "Paket Borongan 5 Item: Diskon 20%",
+        stockStatus: "ready",
         phone: "6283850386401",
         image: "../assets/img/ukm/jasa-2.jpg",
         specs: "Pembersihan Noda Membandel, Kondisioner Mink Oil Alami, Cat Khusus Kulit Awet",
-        description: "Layanan spa dan restorasi warna pudar untuk tas, sepatu kerja, atau jaket kulit kesayangan Anda agar tampak seperti baru kembali.",
+        description: "Layanan spa, pembersihan noda mendalam, dan restorasi warna pudar untuk produk kulit kesayangan dengan jaminan pengerjaan ahli dari mitra UKM.",
         status: "active"
     }
 ];
@@ -127,7 +151,7 @@ const DEFAULT_POSTS = [
     {
         id: "post-3",
         title: "Inovasi IoT Lokal: Petani Muda Manfaatkan Sensor Otomatis",
-        category: "Elektronik",
+        category: "Elektronik & IoT",
         author: "Admin UKM",
         date: "02 Okt 2026",
         snippet: "Bagaimana teknologi mikrokontroler buatan wirausahawan muda mampu memangkas biaya penyiraman air hingga 40 persen.",
@@ -144,9 +168,14 @@ function getProductData() {
     }
     try {
         const parsed = JSON.parse(raw);
-        // Validasi apakah format sudah memiliki 'price', jika belum ganti ke default produk baru
         if (Array.isArray(parsed) && parsed.length > 0 && parsed[0].price) {
-            return parsed;
+            // Auto-backfill field distributor untuk data lawas di browser
+            return parsed.map(item => ({
+                producer: item.producer || "Sentra Mitra Produsen Binaan UKM",
+                wholesale: item.wholesale || "",
+                stockStatus: item.stockStatus || "ready",
+                ...item
+            }));
         } else {
             localStorage.setItem('ukm_products', JSON.stringify(DEFAULT_PRODUCTS));
             return DEFAULT_PRODUCTS;
@@ -158,7 +187,6 @@ function getProductData() {
 
 function saveProductData(data) {
     localStorage.setItem('ukm_products', JSON.stringify(data));
-    // Simpan juga ke 'ukm_list' untuk kompatibilitas
     localStorage.setItem('ukm_list', JSON.stringify(data));
 }
 
@@ -179,22 +207,24 @@ function savePostsData(data) {
     localStorage.setItem('ukm_posts', JSON.stringify(data));
 }
 
-// 3. Data Default Pengaturan Website (Identitas, Kontak, Lokasi & Medsos)
+// 3. Data Default Pengaturan Website (Identitas Distributor, Kontak, Lokasi & Medsos)
 const DEFAULT_SETTINGS = {
-    brandName: "UKM ENTREPRENEUR",
+    brandName: "UKM ENTREPRENEUR DISTRIBUTOR",
     logoUrl: "../assets/img/ui/logo-ukm.jpeg",
     logoStyle: "circle",
-    tagline: "Etalase Inovasi & Produk Usaha Mandiri",
-    headline: "KATALOG PRODUK UNGGULAN",
-    subheadline: "Menyediakan aneka produk lokal berkualitas di bidang Makanan/Minuman, Kerajinan Kulit, Elektronik, dan Jasa yang siap dikomersilkan ke seluruh nusantara.",
+    tagline: "Pusat Distribusi Terpadu Produk & Jasa Mitra Produsen Lokal",
+    headline: "DISTRIBUTOR RESMI PRODUK & JASA UNGGULAN",
+    subheadline: "Menampung, mengkurasi, dan menyalurkan ragam karya unggulan pengrajin, produsen pangan, teknolog, dan profesional lokal langsung ke konsumen & pelaku usaha dengan jaminan mutu terpadu.",
     phone: "6283850386401",
-    email: "kontak@ukm-entrepreneur.id",
-    address: "Jl. Riau No. 120, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115",
+    partnershipPhone: "6283850386401",
+    email: "distribusi@ukm-entrepreneur.id",
+    address: "Pusat Distribusi UKM, Jl. Riau No. 120, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115",
     hours: "Senin - Sabtu: 08.00 - 17.00 WIB",
     instagram: "https://instagram.com",
     facebook: "https://facebook.com",
     linkedin: "https://linkedin.com",
-    footerText: "2026 UKM Entrepreneur Indonesia. Template by Start Bootstrap (MIT License)."
+    footerText: "2026 UKM Entrepreneur Distributor Indonesia. Mitra Resmi Produsen Lokal.",
+    waTemplate: "Halo Admin Distributor {brand}, saya tertarik memesan {name} (Produsen: {producer}) seharga {price}. Mohon info ketersediaan stok di gudang dan prosedur pengiriman."
 };
 
 function getSettingsData() {
@@ -205,6 +235,19 @@ function getSettingsData() {
     }
     try {
         const parsed = JSON.parse(raw);
+        if (parsed.brandName === "UKM ENTREPRENEUR" || !parsed.partnershipPhone) {
+            const upgraded = {
+                ...DEFAULT_SETTINGS,
+                ...parsed,
+                brandName: "UKM ENTREPRENEUR DISTRIBUTOR",
+                tagline: DEFAULT_SETTINGS.tagline,
+                headline: DEFAULT_SETTINGS.headline,
+                subheadline: DEFAULT_SETTINGS.subheadline,
+                partnershipPhone: parsed.partnershipPhone || "6283850386401"
+            };
+            saveSettingsData(upgraded);
+            return upgraded;
+        }
         return { ...DEFAULT_SETTINGS, ...parsed };
     } catch (e) {
         return { ...DEFAULT_SETTINGS };
@@ -443,6 +486,17 @@ function renderProductTable() {
             imgPath = '../' + imgPath;
         }
 
+        const statusBadges = {
+            ready: '<span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size: 0.68rem;"><i class="fas fa-check-circle me-1"></i>Ready Gudang</span>',
+            preorder: '<span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle" style="font-size: 0.68rem;"><i class="fas fa-clock me-1"></i>Pre-Order</span>',
+            limited: '<span class="badge bg-danger-subtle text-danger border border-danger-subtle" style="font-size: 0.68rem;"><i class="fas fa-exclamation-circle me-1"></i>Pasokan Terbatas</span>'
+        };
+        const statusBadgeHtml = statusBadges[item.stockStatus] || statusBadges.ready;
+
+        const wholesaleHtml = item.wholesale 
+            ? `<div class="small text-muted mt-1" style="font-size: 0.72rem;"><i class="fas fa-boxes-stacked text-warning me-1"></i>${item.wholesale}</div>`
+            : '';
+
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td class="text-center text-muted fw-bold small">#${index + 1}</td>
@@ -451,20 +505,28 @@ function renderProductTable() {
                     <img src="${imgPath}" alt="${item.name}" class="table-thumbnail" onerror="this.src='../assets/img/ukm/makanan-1.jpg'" />
                     <div>
                         <div class="product-table-title">${item.name}</div>
+                        <div class="small text-muted" style="font-size: 0.74rem;"><i class="fas fa-industry text-warning me-1"></i><strong>Produsen:</strong> ${item.producer || 'Mitra Binaan UKM'}</div>
                         <div class="product-table-specs"><i class="fas fa-tag me-1 text-warning"></i>${item.specs ? (item.specs.length > 55 ? item.specs.substring(0, 55) + '...' : item.specs) : '-'}</div>
                     </div>
                 </div>
             </td>
-            <td><span class="cat-pill ${pillClass}">${item.categoryLabel || item.category}</span></td>
-            <td><span class="table-price">${item.price || 'Rp -'}</span></td>
+            <td>
+                <span class="cat-pill ${pillClass}">${item.categoryLabel || item.category}</span>
+                <div class="mt-1">${statusBadgeHtml}</div>
+            </td>
+            <td>
+                <span class="table-price">${item.price || 'Rp -'}</span>
+                ${wholesaleHtml}
+            </td>
             <td>
                 <a href="https://wa.me/${item.phone}" target="_blank" class="wa-table-link" title="Klik untuk uji chat WhatsApp">
                     <i class="fab fa-whatsapp"></i> +${item.phone}
                 </a>
+                <div class="text-muted" style="font-size: 0.68rem;">Admin Distribusi UKM</div>
             </td>
             <td class="text-end">
                 <div class="d-inline-flex gap-1">
-                    <button class="btn-action btn-edit" title="Edit Produk" onclick="openEditProductModal('${item.id}')">
+                    <button class="btn-action btn-edit" title="Edit Data Produk" onclick="openEditProductModal('${item.id}')">
                         <i class="fas fa-pencil-alt"></i>
                     </button>
                     <button class="btn-action btn-delete" title="Hapus Produk" onclick="deleteProduct('${item.id}')">
@@ -513,8 +575,16 @@ function removeProductImage() {
 
 function openAddUkmModal() {
     currentEditingProductId = null;
-    document.getElementById('ukmModalTitle').textContent = 'Tambah Produk Baru ke Katalog';
+    document.getElementById('ukmModalTitle').textContent = 'Tambah Produk / Jasa ke Hub Distribusi';
     document.getElementById('ukmForm').reset();
+    
+    const prodInput = document.getElementById('inputProductProducer');
+    if (prodInput) prodInput.value = '';
+    const stockInput = document.getElementById('inputProductStockStatus');
+    if (stockInput) stockInput.value = 'ready';
+    const wholeInput = document.getElementById('inputProductWholesale');
+    if (wholeInput) wholeInput.value = '';
+
     removeProductImage();
     updateModalCategoryBadge('');
     
@@ -529,10 +599,18 @@ function openEditProductModal(id) {
     if (!item) return;
 
     currentEditingProductId = id;
-    document.getElementById('ukmModalTitle').textContent = 'Edit Informasi Produk';
+    document.getElementById('ukmModalTitle').textContent = 'Edit Data Produk Distribusi';
     document.getElementById('inputProductName').value = item.name;
     document.getElementById('inputProductCategory').value = item.category;
     updateModalCategoryBadge(item.category);
+
+    const prodInput = document.getElementById('inputProductProducer');
+    if (prodInput) prodInput.value = item.producer || '';
+    const stockInput = document.getElementById('inputProductStockStatus');
+    if (stockInput) stockInput.value = item.stockStatus || 'ready';
+    const wholeInput = document.getElementById('inputProductWholesale');
+    if (wholeInput) wholeInput.value = item.wholesale || '';
+
     document.getElementById('inputProductPrice').value = (item.price || '').replace(/^Rp\s*/i, '');
     document.getElementById('inputProductPhone').value = item.phone || '';
     document.getElementById('inputProductSpecs').value = item.specs || '';
@@ -596,7 +674,11 @@ function handleSaveProduct(event) {
     const products = getProductData();
 
     const name = document.getElementById('inputProductName').value.trim();
+    const producer = document.getElementById('inputProductProducer')?.value.trim() || 'Mitra Binaan UKM';
     const category = document.getElementById('inputProductCategory').value;
+    const stockStatus = document.getElementById('inputProductStockStatus')?.value || 'ready';
+    const wholesale = document.getElementById('inputProductWholesale')?.value.trim() || '';
+
     let price = document.getElementById('inputProductPrice').value.trim();
     if (!price.toLowerCase().startsWith('rp')) {
         price = 'Rp ' + price;
@@ -630,9 +712,12 @@ function handleSaveProduct(event) {
             products[idx] = {
                 ...products[idx],
                 name,
+                producer,
                 category,
                 categoryLabel: catLabels[category],
+                stockStatus,
                 price,
+                wholesale,
                 phone,
                 specs,
                 description: desc,
@@ -644,9 +729,12 @@ function handleSaveProduct(event) {
         const newProduct = {
             id: 'prod-' + Date.now(),
             name,
+            producer,
             category,
             categoryLabel: catLabels[category],
+            stockStatus,
             price,
+            wholesale,
             phone,
             specs,
             description: desc,
@@ -654,7 +742,7 @@ function handleSaveProduct(event) {
             status: 'active'
         };
         products.unshift(newProduct);
-        showToast(`Produk baru "${name}" berhasil ditambahkan ke katalog!`, 'success');
+        showToast(`Produk baru "${name}" berhasil ditambahkan ke katalog distribusi!`, 'success');
     }
 
     saveProductData(products);
@@ -965,6 +1053,7 @@ function renderSettingsForm() {
     setField('settingHeadline', settings.headline);
     setField('settingSubheadline', settings.subheadline);
     setField('settingPhone', settings.phone);
+    setField('settingPartnershipPhone', settings.partnershipPhone || settings.phone);
     setField('settingEmail', settings.email);
     setField('settingHours', settings.hours);
     setField('settingAddress', settings.address);
@@ -984,6 +1073,7 @@ function handleSaveSettings(event) {
         headline: document.getElementById('settingHeadline')?.value.trim() || DEFAULT_SETTINGS.headline,
         subheadline: document.getElementById('settingSubheadline')?.value.trim() || DEFAULT_SETTINGS.subheadline,
         phone: document.getElementById('settingPhone')?.value.trim() || DEFAULT_SETTINGS.phone,
+        partnershipPhone: document.getElementById('settingPartnershipPhone')?.value.trim() || DEFAULT_SETTINGS.partnershipPhone,
         email: document.getElementById('settingEmail')?.value.trim() || DEFAULT_SETTINGS.email,
         hours: document.getElementById('settingHours')?.value.trim() || DEFAULT_SETTINGS.hours,
         address: document.getElementById('settingAddress')?.value.trim() || DEFAULT_SETTINGS.address,

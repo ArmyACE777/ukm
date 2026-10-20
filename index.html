@@ -245,10 +245,75 @@
             color: #ffffff;
         }
 
+        /* Distributor Architecture & Features */
+        .top-announcement-bar {
+            background: #0f172a;
+            border-bottom: 1px solid rgba(255, 200, 0, 0.35);
+            font-size: 0.78rem;
+            color: #f8f9fa;
+        }
+
+        .distributor-feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            background-color: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+        }
+
+        .distributor-feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08) !important;
+            border-color: #ffc800 !important;
+        }
+
+        .feature-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: #fffbeb;
+            border: 2px solid #fef3c7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-producer-tag {
+            font-size: 0.74rem;
+            color: #64748b;
+        }
+
+        .product-wholesale-chip {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 6px;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            color: #92400e;
+            display: inline-block;
+        }
+
+        .partnership-step-card {
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .partnership-step-card:hover {
+            transform: translateY(-4px);
+            border-color: #ffc800 !important;
+        }
+
         /* Navbar & Header Text Polish */
         #mainNav {
-            padding-top: 0.85rem;
-            padding-bottom: 0.85rem;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        #mainNav.navbar-shrink {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        .navbar-main-container {
+            padding-top: 0.65rem !important;
+            padding-bottom: 0.65rem !important;
         }
 
         #mainNav .navbar-brand {
@@ -380,12 +445,22 @@
 </head>
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container-fluid px-lg-5">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top p-0 flex-column" id="mainNav">
+        <!-- Top Announcement Bar (Model Distributor Terpadu) -->
+        <div class="top-announcement-bar w-100 py-1 px-3 text-center text-white" style="background: rgba(15, 23, 42, 0.96); border-bottom: 1px solid rgba(255, 200, 0, 0.35); font-size: 0.78rem;">
+            <div class="container-fluid d-flex justify-content-center align-items-center flex-wrap gap-2">
+                <span class="badge bg-warning text-dark fw-bold"><i class="fas fa-boxes-packing me-1"></i> HUB DISTRIBUSI RESMI UKM</span>
+                <span class="d-none d-md-inline text-white-50">|</span>
+                <span class="text-light">Menampung & menyalurkan produk terkurasi dari mitra produsen binaan lokal. Melayani Eceran & Grosir.</span>
+                <a href="#partnership" class="text-warning fw-bold text-decoration-none ms-md-2" style="white-space: nowrap;"><i class="fas fa-handshake me-1"></i>Gabung Jadi Mitra Produsen &rarr;</a>
+            </div>
+        </div>
+
+        <div class="container-fluid px-lg-5 navbar-main-container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="#page-top">
                 <img id="siteLogoImg" src="" alt="Logo" class="d-none" style="height: 38px; max-width: 140px; object-fit: contain;" />
                 <i id="siteLogoIcon" class="fas fa-store text-warning fa-lg"></i>
-                <span id="siteBrandName" class="fw-bold tracking-tight text-white" style="font-family: 'Montserrat', sans-serif;">UKM ENTREPRENEUR</span>
+                <span id="siteBrandName" class="fw-bold tracking-tight text-white" style="font-family: 'Montserrat', sans-serif;">UKM ENTREPRENEUR DISTRIBUTOR</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
@@ -394,9 +469,11 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-3 py-lg-0 align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#page-top">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#categories">Kategori</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Produk</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#categories">Sektor Usaha</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#distributor-model">Distribusi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Katalog Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#partnership">Kemitraan Produsen</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Alur Rantai</a></li>
                     <li class="nav-item"><a class="nav-link" href="#news">Kabar UKM</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
                     <li class="nav-item">
@@ -412,17 +489,17 @@
     <!-- Masthead / Hero -->
     <header class="masthead">
         <div class="container">
-            <div class="masthead-subheading" id="siteTagline">Etalase Inovasi & Produk Usaha Mandiri</div>
-            <div class="masthead-heading text-uppercase" id="siteHeadline">KATALOG PRODUK UNGGULAN</div>
-            <p class="lead text-white-50 mb-5 max-w-700 mx-auto" id="siteSubheadline" style="max-width: 650px; margin: 0 auto 2.5rem auto;">
-                Menyediakan aneka produk lokal berkualitas di bidang Makanan/Minuman, Kerajinan Kulit, Elektronik, dan Jasa yang siap dikomersilkan ke seluruh nusantara.
+            <div class="masthead-subheading" id="siteTagline">Pusat Distribusi Terpadu Produk & Jasa Mitra Produsen Lokal</div>
+            <div class="masthead-heading text-uppercase" id="siteHeadline">DISTRIBUTOR RESMI PRODUK & JASA UNGGULAN</div>
+            <p class="lead text-white-50 mb-5 max-w-700 mx-auto" id="siteSubheadline" style="max-width: 680px; margin: 0 auto 2.5rem auto;">
+                Menampung, mengkurasi, dan menyalurkan ragam karya unggulan pengrajin, produsen pangan, teknolog, dan profesional lokal langsung ke konsumen & pelaku usaha dengan standar mutu terjamin.
             </p>
             <div class="d-flex gap-3 justify-content-center flex-wrap">
-                <a class="btn btn-primary btn-xl text-uppercase" href="#portfolio">
-                    <i class="fas fa-box-open me-2"></i> Lihat Produk
+                <a class="btn btn-primary btn-xl text-uppercase shadow" href="#portfolio">
+                    <i class="fas fa-boxes-stacked me-2"></i> Katalog Produk & Grosir
                 </a>
-                <a class="btn btn-outline-light btn-xl text-uppercase" href="#contact">
-                    <i class="fas fa-envelope me-2"></i> Hubungi Kami
+                <a class="btn btn-outline-warning btn-xl text-uppercase text-white" href="#partnership">
+                    <i class="fas fa-handshake me-2"></i> Kemitraan Produsen
                 </a>
             </div>
         </div>
@@ -480,12 +557,59 @@
         </div>
     </section>
 
+    <!-- Distributor Model / Value Proposition Section -->
+    <section class="page-section bg-white" id="distributor-model">
+        <div class="container">
+            <div class="text-center">
+                <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-2" style="letter-spacing: 1px;">Sistem Distribusi Terpusat</span>
+                <h2 class="section-heading text-uppercase">Bukan Dropshipper, Kami Hub Distributor Resmi</h2>
+                <h3 class="section-subheading text-muted">Menghubungkan produsen daerah dengan konsumen dan pelaku usaha melalui satu pusat kurasi, inventaris gudang, dan layanan satu pintu.</h3>
+            </div>
+            <div class="row g-4 mt-2">
+                <div class="col-lg-4">
+                    <div class="distributor-feature-card h-100 p-4 rounded-4 text-center">
+                        <div class="feature-icon-wrapper mb-3 mx-auto">
+                            <i class="fas fa-clipboard-check text-warning fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Kurasi Fisik & Quality Control</h5>
+                        <p class="text-muted small mb-0">
+                            Setiap produk olahan pangan, kerajinan kulit, atau modul IoT dari produsen diuji secara fisik di gudang kami sebelum masuk katalog. Pelanggan dijamin mendapatkan standar kualitas resmi tanpa risiko barang cacat.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="distributor-feature-card h-100 p-4 rounded-4 text-center">
+                        <div class="feature-icon-wrapper mb-3 mx-auto">
+                            <i class="fas fa-warehouse text-warning fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Pergudangan & Pengiriman Satu Pintu</h5>
+                        <p class="text-muted small mb-0">
+                            Konsumen dan reseller bertransaksi langsung dengan admin kami. Pesanan dikemas dan dikirimkan langsung dari gudang distributor, sehingga ongkos kirim hemat dan status barang terpantau transparan.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="distributor-feature-card h-100 p-4 rounded-4 text-center">
+                        <div class="feature-icon-wrapper mb-3 mx-auto">
+                            <i class="fas fa-handshake-angle text-warning fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Pemberdayaan Sentra & Harga Grosir B2B</h5>
+                        <p class="text-muted small mb-0">
+                            Melayani pembelian eceran hingga partai besar untuk instansi / reseller. Kami menjaga hubungan kemitraan yang sehat dengan memastikan margin adil bagi para pengrajin dan produsen lokal binaan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Katalog Produk Section -->
     <section class="page-section" id="portfolio">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Katalog Produk Unggulan</h2>
-                <h3 class="section-subheading text-muted">Temukan aneka produk lokal berkualitas, cek harga & spesifikasi, dan pesan langsung via WhatsApp.</h3>
+                <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-2" style="letter-spacing: 1px;">Katalog Hub Terpadu</span>
+                <h2 class="section-heading text-uppercase">Katalog Produk & Jasa Unggulan</h2>
+                <h3 class="section-subheading text-muted">Temukan aneka produk terkurasi dari mitra produsen daerah. Tersedia pembelian eceran dan pesanan partai grosir/reseller resmi.</h3>
             </div>
 
             <!-- Toolbar Pencarian & Filter Kategori -->
@@ -510,7 +634,7 @@
             <div class="row g-4" id="galleryGrid">
                 
                 <!-- Item 1: Makanan & Minuman 1 -->
-                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="makanan" data-keywords="sambal bawang goreng gurih botol rempah pedas makanan kuliner bandung">
+                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="makanan" data-keywords="sambal bawang goreng gurih botol rempah pedas makanan kuliner bandung dapur sambal bu lastri">
                     <div class="portfolio-link" data-bs-toggle="modal" href="#ukmModal1">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-eye fa-3x"></i></div>
@@ -518,18 +642,23 @@
                         <img class="img-fluid" src="assets/img/ukm/makanan-1.jpg" alt="Sambal Bawang Goreng Gurih" />
                     </div>
                     <div class="portfolio-caption text-center p-4">
-                        <span class="cat-badge cat-makanan">Makanan & Minuman</span>
-                        <div class="portfolio-caption-heading fw-bold fs-5">Sambal Bawang Goreng Gurih</div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+                            <span class="cat-badge cat-makanan">Makanan & Minuman</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1"><i class="fas fa-check-circle me-1"></i> Ready di Gudang</span>
+                        </div>
+                        <div class="portfolio-caption-heading fw-bold fs-5 mb-1">Sambal Bawang Goreng Gurih</div>
+                        <div class="product-producer-tag small text-muted mb-2"><i class="fas fa-industry text-warning me-1"></i> Produsen: <strong>Dapur Sambal Bu Lastri (Brebes)</strong></div>
                         <div><span class="product-price-tag">Rp 35.000</span></div>
-                        <div class="product-specs-chip"><i class="fas fa-box-open me-1 text-muted"></i> Botol 200g • Kaca Food-Grade • Halal ID3211</div>
-                        <button class="btn btn-warning btn-sm product-card-btn w-100" data-bs-toggle="modal" data-bs-target="#ukmModal1">
-                            <i class="fas fa-eye me-1"></i> Detail & Pesan Produk
+                        <div class="product-wholesale-chip text-muted small mt-1"><i class="fas fa-boxes-stacked text-warning me-1"></i> <strong>Grosir:</strong> Min. 12 botol: Rp 28.000/btl</div>
+                        <div class="product-specs-chip mt-2"><i class="fas fa-box-open me-1 text-muted"></i> Botol 200g • Kaca Food-Grade • Halal ID3211</div>
+                        <button class="btn btn-warning btn-sm product-card-btn w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ukmModal1">
+                            <i class="fas fa-eye me-1"></i> Detail & Pesan ke Admin UKM
                         </button>
                     </div>
                 </div>
 
                 <!-- Item 2: Kerajinan Kulit 1 -->
-                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="kulit" data-keywords="dompet kulit bifold slim handstitched kriya aksesoris sapi asli">
+                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="kulit" data-keywords="dompet kulit bifold slim handstitched kriya aksesoris sapi asli sentra kulit sukaregang garut">
                     <div class="portfolio-link" data-bs-toggle="modal" href="#ukmModal2">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-eye fa-3x"></i></div>
@@ -537,18 +666,23 @@
                         <img class="img-fluid" src="assets/img/ukm/kulit-1.jpg" alt="Dompet Kulit Bifold Slim" />
                     </div>
                     <div class="portfolio-caption text-center p-4">
-                        <span class="cat-badge cat-kulit">Kerajinan Kulit, dsb.</span>
-                        <div class="portfolio-caption-heading fw-bold fs-5">Dompet Kulit Bifold Slim</div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+                            <span class="cat-badge cat-kulit">Kerajinan Kulit, dsb.</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1"><i class="fas fa-check-circle me-1"></i> Ready di Gudang</span>
+                        </div>
+                        <div class="portfolio-caption-heading fw-bold fs-5 mb-1">Dompet Kulit Bifold Slim</div>
+                        <div class="product-producer-tag small text-muted mb-2"><i class="fas fa-industry text-warning me-1"></i> Produsen: <strong>Sentra Kulit Sukaregang Garut</strong></div>
                         <div><span class="product-price-tag">Rp 85.000</span></div>
-                        <div class="product-specs-chip"><i class="fas fa-layer-group me-1 text-muted"></i> Kulit Sapi Pull-Up • 6 Slot Kartu • Jahit Tangan</div>
-                        <button class="btn btn-warning btn-sm product-card-btn w-100" data-bs-toggle="modal" data-bs-target="#ukmModal2">
-                            <i class="fas fa-eye me-1"></i> Detail & Pesan Produk
+                        <div class="product-wholesale-chip text-muted small mt-1"><i class="fas fa-boxes-stacked text-warning me-1"></i> <strong>Grosir:</strong> Min. 6 pcs: Rp 70.000/pcs</div>
+                        <div class="product-specs-chip mt-2"><i class="fas fa-layer-group me-1 text-muted"></i> Kulit Sapi Pull-Up • 6 Slot Kartu • Jahit Tangan</div>
+                        <button class="btn btn-warning btn-sm product-card-btn w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ukmModal2">
+                            <i class="fas fa-eye me-1"></i> Detail & Pesan ke Admin UKM
                         </button>
                     </div>
                 </div>
 
                 <!-- Item 3: Elektronik 1 -->
-                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="elektronik" data-keywords="modul smart relay esp32 iot 4-channel hardware otomasi wifi bluetooth">
+                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="elektronik" data-keywords="modul smart relay esp32 iot 4-channel hardware otomasi wifi bluetooth polijati iot lab">
                     <div class="portfolio-link" data-bs-toggle="modal" href="#ukmModal3">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-eye fa-3x"></i></div>
@@ -556,18 +690,23 @@
                         <img class="img-fluid" src="assets/img/ukm/elektronik-1.jpg" alt="Modul Smart Relay ESP32 IoT" />
                     </div>
                     <div class="portfolio-caption text-center p-4">
-                        <span class="cat-badge cat-elektronik">Elektronik</span>
-                        <div class="portfolio-caption-heading fw-bold fs-5">Modul Smart Relay ESP32 IoT</div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+                            <span class="cat-badge cat-elektronik">Elektronik & IoT</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1"><i class="fas fa-check-circle me-1"></i> Ready di Gudang</span>
+                        </div>
+                        <div class="portfolio-caption-heading fw-bold fs-5 mb-1">Modul Smart Relay ESP32 IoT</div>
+                        <div class="product-producer-tag small text-muted mb-2"><i class="fas fa-industry text-warning me-1"></i> Produsen: <strong>Polijati IoT Tech Lab</strong></div>
                         <div><span class="product-price-tag">Rp 145.000</span></div>
-                        <div class="product-specs-chip"><i class="fas fa-wifi me-1 text-muted"></i> 4-Channel • WiFi/Bluetooth • 5V/12V DC</div>
-                        <button class="btn btn-warning btn-sm product-card-btn w-100" data-bs-toggle="modal" data-bs-target="#ukmModal3">
-                            <i class="fas fa-eye me-1"></i> Detail & Pesan Produk
+                        <div class="product-wholesale-chip text-muted small mt-1"><i class="fas fa-boxes-stacked text-warning me-1"></i> <strong>Grosir:</strong> Min. 5 unit: Rp 125.000/unit</div>
+                        <div class="product-specs-chip mt-2"><i class="fas fa-wifi me-1 text-muted"></i> 4-Channel • WiFi/Bluetooth • 5V/12V DC</div>
+                        <button class="btn btn-warning btn-sm product-card-btn w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ukmModal3">
+                            <i class="fas fa-eye me-1"></i> Detail & Pesan ke Admin UKM
                         </button>
                     </div>
                 </div>
 
                 <!-- Item 4: Jasa 1 -->
-                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="jasa" data-keywords="paket foto katalog produk komersial branding foto e-commerce umkm">
+                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="jasa" data-keywords="paket foto katalog produk komersial branding foto e-commerce studio visual nusantara">
                     <div class="portfolio-link" data-bs-toggle="modal" href="#ukmModal4">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-eye fa-3x"></i></div>
@@ -575,18 +714,23 @@
                         <img class="img-fluid" src="assets/img/ukm/jasa-1.jpg" alt="Paket Foto Katalog Produk Komersial" />
                     </div>
                     <div class="portfolio-caption text-center p-4">
-                        <span class="cat-badge cat-jasa">Jasa Kreatif</span>
-                        <div class="portfolio-caption-heading fw-bold fs-5">Paket Foto Katalog Komersial</div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+                            <span class="cat-badge cat-jasa">Jasa Profesional</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1"><i class="fas fa-check-circle me-1"></i> Layanan Aktif</span>
+                        </div>
+                        <div class="portfolio-caption-heading fw-bold fs-5 mb-1">Paket Foto Katalog Komersial</div>
+                        <div class="product-producer-tag small text-muted mb-2"><i class="fas fa-industry text-warning me-1"></i> Produsen: <strong>Studio Visual & Digital Kreatif</strong></div>
                         <div><span class="product-price-tag">Rp 350.000</span></div>
-                        <div class="product-specs-chip"><i class="fas fa-images me-1 text-muted"></i> 10 Foto High-Res • Styling Studio • Hak Komersial</div>
-                        <button class="btn btn-warning btn-sm product-card-btn w-100" data-bs-toggle="modal" data-bs-target="#ukmModal4">
-                            <i class="fas fa-eye me-1"></i> Detail & Pesan Produk
+                        <div class="product-wholesale-chip text-muted small mt-1"><i class="fas fa-boxes-stacked text-warning me-1"></i> <strong>Grosir:</strong> Paket 3 Produk Diskon 15%</div>
+                        <div class="product-specs-chip mt-2"><i class="fas fa-images me-1 text-muted"></i> 10 Foto High-Res • Styling Studio • Hak Komersial</div>
+                        <button class="btn btn-warning btn-sm product-card-btn w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ukmModal4">
+                            <i class="fas fa-eye me-1"></i> Detail & Pesan ke Admin UKM
                         </button>
                     </div>
                 </div>
 
                 <!-- Item 5: Makanan & Minuman 2 -->
-                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="makanan" data-keywords="cold brew arabika gayo petik merah kopi gayo botol minuman surabaya">
+                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="makanan" data-keywords="cold brew arabika gayo petik merah kopi gayo botol koperasi tani takengon">
                     <div class="portfolio-link" data-bs-toggle="modal" href="#ukmModal5">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-eye fa-3x"></i></div>
@@ -594,18 +738,23 @@
                         <img class="img-fluid" src="assets/img/ukm/makanan-2.jpg" alt="Cold Brew Arabika Gayo Petik Merah" />
                     </div>
                     <div class="portfolio-caption text-center p-4">
-                        <span class="cat-badge cat-makanan">Makanan & Minuman</span>
-                        <div class="portfolio-caption-heading fw-bold fs-5">Cold Brew Arabika Gayo</div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+                            <span class="cat-badge cat-makanan">Makanan & Minuman</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1"><i class="fas fa-check-circle me-1"></i> Ready di Gudang</span>
+                        </div>
+                        <div class="portfolio-caption-heading fw-bold fs-5 mb-1">Cold Brew Arabika Gayo</div>
+                        <div class="product-producer-tag small text-muted mb-2"><i class="fas fa-industry text-warning me-1"></i> Produsen: <strong>Koperasi Tani Kopi Gayo Takengon</strong></div>
                         <div><span class="product-price-tag">Rp 28.000</span></div>
-                        <div class="product-specs-chip"><i class="fas fa-coffee me-1 text-muted"></i> 100% Arabika Gayo • Botol 250ml • Ekstraksi 18 Jam</div>
-                        <button class="btn btn-warning btn-sm product-card-btn w-100" data-bs-toggle="modal" data-bs-target="#ukmModal5">
-                            <i class="fas fa-eye me-1"></i> Detail & Pesan Produk
+                        <div class="product-wholesale-chip text-muted small mt-1"><i class="fas fa-boxes-stacked text-warning me-1"></i> <strong>Grosir:</strong> Min. 24 btl: Rp 22.000/btl</div>
+                        <div class="product-specs-chip mt-2"><i class="fas fa-coffee me-1 text-muted"></i> 100% Arabika Gayo • Botol 250ml • Ekstraksi 18 Jam</div>
+                        <button class="btn btn-warning btn-sm product-card-btn w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ukmModal5">
+                            <i class="fas fa-eye me-1"></i> Detail & Pesan ke Admin UKM
                         </button>
                     </div>
                 </div>
 
                 <!-- Item 6: Kerajinan Kulit 2 -->
-                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="kulit" data-keywords="ikat pinggang kulit asli gesper kuningan tempa sabuk pria aksesoris kulit nabati solo">
+                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="kulit" data-keywords="ikat pinggang kulit asli gesper kuningan tempa sabuk pria aksesoris kulit atelier garut">
                     <div class="portfolio-link" data-bs-toggle="modal" href="#ukmModal6">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-eye fa-3x"></i></div>
@@ -613,18 +762,23 @@
                         <img class="img-fluid" src="assets/img/ukm/kulit-2.jpg" alt="Ikat Pinggang Kulit Asli Gesper Kuningan" />
                     </div>
                     <div class="portfolio-caption text-center p-4">
-                        <span class="cat-badge cat-kulit">Kerajinan Kulit, dsb.</span>
-                        <div class="portfolio-caption-heading fw-bold fs-5">Ikat Pinggang Kulit Nabati</div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+                            <span class="cat-badge cat-kulit">Kerajinan Kulit, dsb.</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1"><i class="fas fa-check-circle me-1"></i> Ready di Gudang</span>
+                        </div>
+                        <div class="portfolio-caption-heading fw-bold fs-5 mb-1">Ikat Pinggang Kulit Nabati</div>
+                        <div class="product-producer-tag small text-muted mb-2"><i class="fas fa-industry text-warning me-1"></i> Produsen: <strong>Atelier Sabuk Tradisional Garut</strong></div>
                         <div><span class="product-price-tag">Rp 120.000</span></div>
-                        <div class="product-specs-chip"><i class="fas fa-ruler me-1 text-muted"></i> Kulit Sapi 4mm • Gesper Kuningan Murni • Batik</div>
-                        <button class="btn btn-warning btn-sm product-card-btn w-100" data-bs-toggle="modal" data-bs-target="#ukmModal6">
-                            <i class="fas fa-eye me-1"></i> Detail & Pesan Produk
+                        <div class="product-wholesale-chip text-muted small mt-1"><i class="fas fa-boxes-stacked text-warning me-1"></i> <strong>Grosir:</strong> Min. 10 pcs: Rp 95.000/pcs</div>
+                        <div class="product-specs-chip mt-2"><i class="fas fa-ruler me-1 text-muted"></i> Kulit Sapi 4mm • Gesper Kuningan Murni • Batik</div>
+                        <button class="btn btn-warning btn-sm product-card-btn w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ukmModal6">
+                            <i class="fas fa-eye me-1"></i> Detail & Pesan ke Admin UKM
                         </button>
                     </div>
                 </div>
 
                 <!-- Item 7: Elektronik 2 -->
-                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="elektronik" data-keywords="sensor kelembaban tanah surya irigasi otomatis solar greenhouse bogor">
+                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="elektronik" data-keywords="sensor kelembaban tanah surya irigasi otomatis solar greenhouse agritech polijati">
                     <div class="portfolio-link" data-bs-toggle="modal" href="#ukmModal7">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-eye fa-3x"></i></div>
@@ -632,18 +786,23 @@
                         <img class="img-fluid" src="assets/img/ukm/elektronik-2.jpg" alt="Sensor Kelembaban Tanah Surya" />
                     </div>
                     <div class="portfolio-caption text-center p-4">
-                        <span class="cat-badge cat-elektronik">Elektronik</span>
-                        <div class="portfolio-caption-heading fw-bold fs-5">Sensor Tanah Surya & Irigasi</div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+                            <span class="cat-badge cat-elektronik">Elektronik & IoT</span>
+                            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1"><i class="fas fa-clock me-1"></i> Pre-Order Mitra</span>
+                        </div>
+                        <div class="portfolio-caption-heading fw-bold fs-5 mb-1">Sensor Tanah Surya & Irigasi</div>
+                        <div class="product-producer-tag small text-muted mb-2"><i class="fas fa-industry text-warning me-1"></i> Produsen: <strong>Agritech Mandiri Polijati</strong></div>
                         <div><span class="product-price-tag">Rp 275.000</span></div>
-                        <div class="product-specs-chip"><i class="fas fa-solar-panel me-1 text-muted"></i> Solar 5W + Baterai 18650 • Sensor Anti-Karat • Solenoid 12V</div>
-                        <button class="btn btn-warning btn-sm product-card-btn w-100" data-bs-toggle="modal" data-bs-target="#ukmModal7">
-                            <i class="fas fa-eye me-1"></i> Detail & Pesan Produk
+                        <div class="product-wholesale-chip text-muted small mt-1"><i class="fas fa-boxes-stacked text-warning me-1"></i> <strong>Grosir:</strong> Min. 3 set: Rp 240.000/set</div>
+                        <div class="product-specs-chip mt-2"><i class="fas fa-solar-panel me-1 text-muted"></i> Solar 5W + Baterai 18650 • Sensor Anti-Karat • Solenoid 12V</div>
+                        <button class="btn btn-warning btn-sm product-card-btn w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ukmModal7">
+                            <i class="fas fa-eye me-1"></i> Detail & Pesan ke Admin UKM
                         </button>
                     </div>
                 </div>
 
                 <!-- Item 8: Jasa 2 -->
-                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="jasa" data-keywords="jasa deep cleaning recoloring tas sepatu kulit spa restorasi repaint malang">
+                <div class="col-lg-4 col-sm-6 portfolio-item" data-category="jasa" data-keywords="jasa deep cleaning recoloring tas sepatu kulit spa restorasi repaint leather care bandung">
                     <div class="portfolio-link" data-bs-toggle="modal" href="#ukmModal8">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-eye fa-3x"></i></div>
@@ -651,12 +810,17 @@
                         <img class="img-fluid" src="assets/img/ukm/jasa-2.jpg" alt="Jasa Spa & Restorasi Kulit" />
                     </div>
                     <div class="portfolio-caption text-center p-4">
-                        <span class="cat-badge cat-jasa">Jasa Terapan</span>
-                        <div class="portfolio-caption-heading fw-bold fs-5">Spa & Restorasi Kulit / Sepatu</div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+                            <span class="cat-badge cat-jasa">Jasa Profesional</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1"><i class="fas fa-check-circle me-1"></i> Layanan Aktif</span>
+                        </div>
+                        <div class="portfolio-caption-heading fw-bold fs-5 mb-1">Spa & Restorasi Kulit / Sepatu</div>
+                        <div class="product-producer-tag small text-muted mb-2"><i class="fas fa-industry text-warning me-1"></i> Produsen: <strong>Leather Care Workshop Bandung</strong></div>
                         <div><span class="product-price-tag">Rp 75.000</span></div>
-                        <div class="product-specs-chip"><i class="fas fa-paint-roller me-1 text-muted"></i> Deep Cleaning • Mink Oil Alami • Cat Khusus Awet</div>
-                        <button class="btn btn-warning btn-sm product-card-btn w-100" data-bs-toggle="modal" data-bs-target="#ukmModal8">
-                            <i class="fas fa-eye me-1"></i> Detail & Pesan Produk
+                        <div class="product-wholesale-chip text-muted small mt-1"><i class="fas fa-boxes-stacked text-warning me-1"></i> <strong>Grosir:</strong> Borongan 5 Item Diskon 20%</div>
+                        <div class="product-specs-chip mt-2"><i class="fas fa-paint-roller me-1 text-muted"></i> Deep Cleaning • Mink Oil Alami • Cat Khusus Awet</div>
+                        <button class="btn btn-warning btn-sm product-card-btn w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ukmModal8">
+                            <i class="fas fa-eye me-1"></i> Detail & Pesan ke Admin UKM
                         </button>
                     </div>
                 </div>
@@ -697,12 +861,13 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section (Rantai Pasok Distributor) -->
     <section class="page-section" id="about">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Tentang Program</h2>
-                <h3 class="section-subheading text-muted">Gerakan digitalisasi dan promosi karya mandiri wirausahawan Indonesia.</h3>
+                <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-2" style="letter-spacing: 1px;">Alur Kerja</span>
+                <h2 class="section-heading text-uppercase">Rantai Distribusi Terpadu</h2>
+                <h3 class="section-subheading text-muted">Bagaimana kami mengelola produk mitra produsen dari sentra lokal hingga tiba di tangan konsumen.</h3>
             </div>
             <ul class="timeline">
                 <li>
@@ -710,9 +875,9 @@
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>Tahap 1</h4>
-                            <h4 class="subheading">Kurasi Kualitas & Produk</h4>
+                            <h4 class="subheading">Kurasi & Seleksi Produsen</h4>
                         </div>
-                        <div class="timeline-body"><p class="text-muted">Setiap produk dibuat dan diseleksi berdasarkan orisinalitas bahan, durabilitas, serta standar kualitas yang terjamin.</p></div>
+                        <div class="timeline-body"><p class="text-muted">Setiap produk dari mitra produsen binaan melalui uji fisik kelayakan rasa, keaslian material, dan legalitas sebelum masuk sistem distribusi.</p></div>
                     </div>
                 </li>
                 <li class="timeline-inverted">
@@ -720,9 +885,9 @@
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>Tahap 2</h4>
-                            <h4 class="subheading">Showcase & Etalase Digital</h4>
+                            <h4 class="subheading">Pergudangan & Standarisasi</h4>
                         </div>
-                        <div class="timeline-body"><p class="text-muted">Menampilkan dokumentasi visual autentik, rincian spesifikasi, dan katalog produk yang jelas dan mudah diakses oleh calon pembeli.</p></div>
+                        <div class="timeline-body"><p class="text-muted">Barang ditampung dan dikelola di gudang distributor pusat dengan kemasan standar pengiriman aman untuk menjamin mutu barang tetap prima.</p></div>
                     </div>
                 </li>
                 <li>
@@ -730,9 +895,9 @@
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>Tahap 3</h4>
-                            <h4 class="subheading">Koneksi Pasar & B2B</h4>
+                            <h4 class="subheading">Penyaluran Nasional & Grosir</h4>
                         </div>
-                        <div class="timeline-body"><p class="text-muted">Membuka jembatan transaksi langsung tanpa perantara biaya tersembunyi antara pembeli dan admin penjualan resmi melalui kontak WhatsApp.</p></div>
+                        <div class="timeline-body"><p class="text-muted">Konsumen dan reseller bertransaksi langsung dengan admin distributor UKM. Pengiriman terpusat satu pintu menjamin efisiensi ongkos kirim dan garansi resmi.</p></div>
                     </div>
                 </li>
                 <li class="timeline-inverted">
@@ -745,6 +910,52 @@
                     </div>
                 </li>
             </ul>
+        </div>
+    </section>
+
+    <!-- Producer Partnership Section -->
+    <section class="page-section bg-dark text-white" id="partnership">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-2" style="letter-spacing: 1px;">Kemitraan Terbuka</span>
+                <h2 class="section-heading text-uppercase text-white">Salurkan Produk Anda Melalui Jaringan Kami</h2>
+                <h3 class="section-subheading text-white-50">Apakah Anda produsen makanan, pengrajin kriya, perakit teknologi, atau penyedia jasa? Kami siap menjadi distributor resmi Anda.</h3>
+            </div>
+            
+            <div class="row g-4 justify-content-center mb-5">
+                <div class="col-md-4">
+                    <div class="partnership-step-card p-4 rounded-4 h-100" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,200,0,0.25);">
+                        <div class="step-number text-warning fw-bold fs-3 mb-2">01</div>
+                        <h5 class="fw-bold text-white mb-2">Pengajuan Sampel & Legalitas</h5>
+                        <p class="text-white-50 small mb-0">Kirimkan portofolio, spesifikasi teknis, serta sampel produk ke tim kurasi distributor kami untuk evaluasi rasa, bahan, dan kemasan.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="partnership-step-card p-4 rounded-4 h-100" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,200,0,0.25);">
+                        <div class="step-number text-warning fw-bold fs-3 mb-2">02</div>
+                        <h5 class="fw-bold text-white mb-2">Kesepakatan Harga & Pasokan</h5>
+                        <p class="text-white-50 small mb-0">Penetapan harga eceran, margin distribusi grosir yang saling menguntungkan, serta jadwal pasokan stok berkala ke gudang kami.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="partnership-step-card p-4 rounded-4 h-100" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,200,0,0.25);">
+                        <div class="step-number text-warning fw-bold fs-3 mb-2">03</div>
+                        <h5 class="fw-bold text-white mb-2">Penyaluran Nasional & Promosi</h5>
+                        <p class="text-white-50 small mb-0">Produk Anda resmi tayang di katalog digital, dipromosikan ke jaringan reseller dan diproses pengirimannya secara terpusat.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partnership CTA Box -->
+            <div class="p-4 p-md-5 rounded-4 text-center" style="background: linear-gradient(135deg, rgba(255,200,0,0.15) 0%, rgba(255,200,0,0.03) 100%); border: 1.5px solid #ffc800;">
+                <h4 class="fw-bold text-white mb-2">Siap Memperluas Jangkauan Pasar Produk Anda?</h4>
+                <p class="text-white-50 mb-4 max-w-600 mx-auto" style="max-width: 600px;">
+                    Konsultasikan produk atau jasa Anda dengan tim kurator dan kemitraan distributor kami melalui saluran resmi WhatsApp.
+                </p>
+                <a href="https://wa.me/6283850386401?text=Halo%20Tim%20Kemitraan%20UKM%20Distributor%2C%20saya%20produsen%2Fpengrajin%20ingin%20mengajukan%20produk%20kami%20untuk%20didistribusikan." target="_blank" class="btn btn-warning btn-lg fw-bold px-4 py-3 rounded-pill text-dark shadow">
+                    <i class="fab fa-whatsapp me-2 fa-lg text-success"></i> Ajukan Kemitraan Produsen via WhatsApp
+                </a>
+            </div>
         </div>
     </section>
 
@@ -804,21 +1015,22 @@
     <section class="page-section" id="contact">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-heading text-uppercase">Konsultasi & Pemesanan Produk</h2>
-                <h3 class="section-subheading text-muted">Tertarik dengan produk kami, ingin memesan dalam partai besar, atau butuh kustomisasi? Hubungi tim kami.</h3>
+                <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-2" style="letter-spacing: 1px;">Layanan Satu Pintu</span>
+                <h2 class="section-heading text-uppercase">Konsultasi, Pemesanan & Kemitraan</h2>
+                <h3 class="section-subheading text-muted">Tertarik memesan produk (eceran / grosir), atau ingin bergabung menyalurkan produk sebagai mitra produsen? Tim distributor kami siap melayani Anda.</h3>
             </div>
 
-            <!-- Contact Information Cards (Alamat, WhatsApp, Email, Jam Kerja) -->
+            <!-- Contact Information Cards (Alamat, WhatsApp Pemesanan, WhatsApp Kemitraan, Jam Kerja) -->
             <div class="row g-4 mb-5 text-start">
                 <div class="col-lg-3 col-sm-6">
                     <div class="p-3 bg-white rounded-3 shadow-sm h-100 border-start border-warning border-4">
                         <div class="d-flex align-items-center gap-3">
                             <div class="rounded-circle bg-warning-subtle text-warning p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-                                <i class="fas fa-map-marker-alt fa-lg"></i>
+                                <i class="fas fa-warehouse fa-lg"></i>
                             </div>
                             <div>
-                                <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.72rem;">Alamat & Lokasi</small>
-                                <span id="siteAddress" class="fw-bold text-dark small">Jl. Riau No. 120, Bandung, Jawa Barat</span>
+                                <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.72rem;">Gudang Distribusi</small>
+                                <span id="siteAddress" class="fw-bold text-dark small">Pusat Distribusi UKM, Jl. Riau No. 120, Bandung</span>
                             </div>
                         </div>
                     </div>
@@ -842,12 +1054,12 @@
                     <div class="p-3 bg-white rounded-3 shadow-sm h-100 border-start border-warning border-4">
                         <div class="d-flex align-items-center gap-3">
                             <div class="rounded-circle bg-warning-subtle text-warning p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-                                <i class="fas fa-envelope fa-lg text-primary"></i>
+                                <i class="fas fa-handshake fa-lg text-warning"></i>
                             </div>
                             <div>
-                                <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.72rem;">Email Resmi</small>
-                                <a id="siteEmailLink" href="mailto:kontak@ukm-entrepreneur.id" class="fw-bold text-dark small text-decoration-none">
-                                    <span id="siteEmail">kontak@ukm-entrepreneur.id</span>
+                                <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.72rem;">Kemitraan Produsen</small>
+                                <a id="sitePartnershipPhoneLink" href="https://wa.me/6283850386401" target="_blank" class="fw-bold text-dark small text-decoration-none">
+                                    <span id="sitePartnershipPhoneDisplay">+62 838-5038-6401</span>
                                 </a>
                             </div>
                         </div>
@@ -860,7 +1072,7 @@
                                 <i class="fas fa-clock fa-lg text-secondary"></i>
                             </div>
                             <div>
-                                <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.72rem;">Jam Operasional</small>
+                                <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.72rem;">Jam Layanan Gudang</small>
                                 <span id="siteHours" class="fw-bold text-dark small">Senin - Sabtu: 08.00 - 17.00 WIB</span>
                             </div>
                         </div>
@@ -873,14 +1085,21 @@
                 <div class="row align-items-stretch mb-5">
                     <div class="col-md-6">
                         <div class="form-group">
+                            <select class="form-control" id="contactInquiryType" required style="height: 60px;">
+                                <option value="Eceran" selected>📌 Tujuan: Pembelian Eceran / Konsumsi Pribadi</option>
+                                <option value="Grosir">📦 Tujuan: Pembelian Grosir / Reseller B2B / Instansi</option>
+                                <option value="Kemitraan Produsen">🤝 Tujuan: Pengajuan Produk Sebagai Mitra Produsen</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <input class="form-control" id="ownerName" type="text" placeholder="Nama Lengkap *" required />
                         </div>
                         <div class="form-group">
-                            <input class="form-control" id="bizName" type="text" placeholder="Nama Perusahaan / Instansi (Opsional)" />
+                            <input class="form-control" id="bizName" type="text" placeholder="Nama Usaha / Instansi (Opsional)" />
                         </div>
                         <div class="form-group">
                             <select class="form-control" id="bizCategory" required style="height: 60px;">
-                                <option value="" disabled selected>Pilih Kategori Produk *</option>
+                                <option value="" disabled selected>Pilih Sektor Produk / Jasa *</option>
                                 <option value="Makanan/Minuman">Produk Makanan & Minuman</option>
                                 <option value="Kerajinan Kulit, dsb.">Kerajinan Kulit & Kriya</option>
                                 <option value="Elektronik">Elektronik & IoT</option>
@@ -893,13 +1112,13 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group form-group-textarea mb-md-0">
-                            <textarea class="form-control" id="bizDesc" placeholder="Tuliskan rincian produk yang Anda minati, perkiraan jumlah kebutuhan, atau pertanyaan lainnya *" required></textarea>
+                            <textarea class="form-control" id="bizDesc" placeholder="Tuliskan rincian kebutuhan Anda (contoh: pesanan satuan, volume grosir, atau spesifikasi produk yang ingin diajukan untuk kemitraan distribusi) *" required></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="text-center">
                     <button class="btn btn-primary btn-xl text-uppercase shadow" type="submit">
-                        <i class="fab fa-whatsapp me-2"></i> Kirim Pesan via WhatsApp
+                        <i class="fab fa-whatsapp me-2"></i> Kirim ke Admin Distributor via WhatsApp
                     </button>
                 </div>
             </form>
@@ -1269,18 +1488,144 @@
             const searchInput = document.getElementById('gallerySearch');
             const noResults = document.getElementById('noResults');
 
-            // 1. Sync data dari CMS jika ada data di localStorage
+            // 1. Data Default Produk Distributor (8 Produk dari 4 Sektor)
+            const DEFAULT_PRODUCTS = [
+                {
+                    id: "prod-1",
+                    name: "Sambal Bawang Goreng Gurih (Botol 200g)",
+                    producer: "Dapur Sambal Bu Lastri (Brebes)",
+                    category: "makanan",
+                    categoryLabel: "Makanan & Minuman",
+                    price: "Rp 35.000",
+                    wholesale: "Min. 12 botol: Rp 28.000/btl (Grosir Reseller)",
+                    stockStatus: "ready",
+                    phone: "6283850386401",
+                    image: "assets/img/ukm/makanan-1.jpg",
+                    specs: "Isi: 200g, Botol Kaca Food-Grade, Halal ID3211, Tahan 6 Bulan",
+                    description: "Sambal olahan cabai rawit merah segar dan bawang merah Brebes pilihan dari petani binaan dengan minyak kelapa murni. Didistribusikan resmi dengan standar higienis tanpa bahan pengawet kimia.",
+                    status: "active"
+                },
+                {
+                    id: "prod-2",
+                    name: "Dompet Kulit Bifold Slim Handstitched",
+                    producer: "Sentra Kriya Kulit Sukaregang Garut",
+                    category: "kulit",
+                    categoryLabel: "Kerajinan Kulit, dsb.",
+                    price: "Rp 85.000",
+                    wholesale: "Min. 6 pcs: Rp 70.000/pcs (Grosir Toko)",
+                    stockStatus: "ready",
+                    phone: "6283850386401",
+                    image: "assets/img/ukm/kulit-1.jpg",
+                    specs: "Bahan: Kulit Sapi Pull-Up Asli, 6 Slot Kartu, Jahit Tangan (Saddle Stitch)",
+                    description: "Dompet saku pria berdesain tipis minimalis langsung dari penyamak kulit Garut mitra binaan. Tekstur lentur dengan efek patina alami yang semakin mengkilap seiring waktu.",
+                    status: "active"
+                },
+                {
+                    id: "prod-3",
+                    name: "Modul Smart Relay ESP32 IoT 4-Channel",
+                    producer: "Polijati IoT & Hardware Tech Lab",
+                    category: "elektronik",
+                    categoryLabel: "Elektronik & IoT",
+                    price: "Rp 145.000",
+                    wholesale: "Min. 5 unit: Rp 125.000/unit (Paket Lab/Proyek)",
+                    stockStatus: "ready",
+                    phone: "6283850386401",
+                    image: "assets/img/ukm/elektronik-1.jpg",
+                    specs: "Tegangan: 5V/12V DC, WiFi & Bluetooth, Kompatibel Android/iOS, PCB Gold Plate",
+                    description: "Perangkat kontroler otomasi pintar karya technopreneur binaan untuk otomasi rumah dan industri kecil. Dikurasi dan didistribusikan dengan jaminan garansi penggantian unit.",
+                    status: "active"
+                },
+                {
+                    id: "prod-4",
+                    name: "Paket Foto Katalog Produk Komersial",
+                    producer: "Studio Visual & Digital Kreatif Nusantara",
+                    category: "jasa",
+                    categoryLabel: "Jasa Profesional",
+                    price: "Rp 350.000",
+                    wholesale: "Paket 3 Produk: Diskon 15% (Pengadaan Usaha)",
+                    stockStatus: "ready",
+                    phone: "6283850386401",
+                    image: "assets/img/ukm/jasa-1.jpg",
+                    specs: "10 Foto High-Res Edit, Styling Studio, Hak Cipta Komersial, Format E-Commerce",
+                    description: "Layanan jasa fotografi terkurasi dari jejaring fotografer komersial binaan UKM. Dirancang untuk kemasan makanan, kriya, dan fashion agar tampil profesional di seluruh kanal digital.",
+                    status: "active"
+                },
+                {
+                    id: "prod-5",
+                    name: "Cold Brew Arabika Gayo Petik Merah (Botol 250ml)",
+                    producer: "Koperasi Tani Kopi Gayo Takengon",
+                    category: "makanan",
+                    categoryLabel: "Makanan & Minuman",
+                    price: "Rp 28.000",
+                    wholesale: "Min. 24 botol: Rp 22.000/btl (Pasokan Kafe/Resto)",
+                    stockStatus: "ready",
+                    phone: "6283850386401",
+                    image: "assets/img/ukm/makanan-2.jpg",
+                    specs: "Komposisi: 100% Arabika Gayo Natural, Ekstraksi 18 Jam, Botol Kaca Amber",
+                    description: "Kopi seduh dingin artisan langsung dari petani kopi dataran tinggi Gayo. Ekstraksi dingin 18 jam dengan cita rasa plum manis alami dan aman di lambung.",
+                    status: "active"
+                },
+                {
+                    id: "prod-6",
+                    name: "Ikat Pinggang Kulit Asli Gesper Kuningan Tempa",
+                    producer: "Atelier Sabuk Kulit Tradisional Garut",
+                    category: "kulit",
+                    categoryLabel: "Kerajinan Kulit, dsb.",
+                    price: "Rp 120.000",
+                    wholesale: "Min. 10 pcs: Rp 95.000/pcs (Grosir Butik)",
+                    stockStatus: "ready",
+                    phone: "6283850386401",
+                    image: "assets/img/ukm/kulit-2.jpg",
+                    specs: "Lebar: 3.8 cm, Tebal: 4 mm, Solid Brass Buckle, Aksesori Kain Batik Halus",
+                    description: "Sabuk pria berkarakter kokoh dari kulit sapi nabati tebal satu lapis tanpa lem. Dilengkapi gesper kuningan murni antik yang tidak berkarat seumur hidup.",
+                    status: "active"
+                },
+                {
+                    id: "prod-7",
+                    name: "Sensor Kelembaban Tanah Surya & Irigasi Otomatis",
+                    producer: "Agritech Mandiri Polijati",
+                    category: "elektronik",
+                    categoryLabel: "Elektronik & IoT",
+                    price: "Rp 275.000",
+                    wholesale: "Min. 3 paket: Rp 240.000/set (Kelompok Tani)",
+                    stockStatus: "preorder",
+                    phone: "6283850386401",
+                    image: "assets/img/ukm/elektronik-2.jpg",
+                    specs: "Tenaga: Solar Panel 5W + Baterai 18650, Sensor Kapasitif Anti-Karat, Solenoid Valve 12V",
+                    description: "Sistem otomasi irigasi pertanian karya inovator agritech lokal. Bekerja mandiri dengan tenaga surya untuk kebun dan greenhouse tanpa kabel listrik luar.",
+                    status: "active"
+                },
+                {
+                    id: "prod-8",
+                    name: "Jasa Deep Cleaning & Recoloring Tas/Sepatu Kulit",
+                    producer: "Leather Care Specialist Workshop Bandung",
+                    category: "jasa",
+                    categoryLabel: "Jasa Profesional",
+                    price: "Rp 75.000",
+                    wholesale: "Paket Borongan 5 Item: Diskon 20%",
+                    stockStatus: "ready",
+                    phone: "6283850386401",
+                    image: "assets/img/ukm/jasa-2.jpg",
+                    specs: "Pembersihan Noda Membandel, Kondisioner Mink Oil Alami, Cat Khusus Kulit Awet",
+                    description: "Layanan spa, pembersihan noda mendalam, dan restorasi warna pudar untuk produk kulit kesayangan dengan jaminan pengerjaan ahli dari mitra UKM.",
+                    status: "active"
+                }
+            ];
+
+            // 1. Sync data dari CMS jika ada data di localStorage, atau fallback ke default distributor
+            let itemsToDisplay = DEFAULT_PRODUCTS;
             const storedProducts = localStorage.getItem('ukm_products') || localStorage.getItem('ukm_list');
             if (storedProducts) {
                 try {
                     const productArray = JSON.parse(storedProducts);
                     if (Array.isArray(productArray) && productArray.length > 0) {
-                        renderDynamicGallery(productArray);
+                        itemsToDisplay = productArray;
                     }
                 } catch(e) {
-                    console.log('Using default static gallery');
+                    console.log('Using default distributor gallery');
                 }
             }
+            renderDynamicGallery(itemsToDisplay);
 
             function renderDynamicGallery(items) {
                 galleryGrid.innerHTML = '';
@@ -1305,12 +1650,23 @@
                     const badgeClass = catBadges[item.category] || 'cat-makanan';
                     const priceText = item.price ? (item.price.startsWith('Rp') ? item.price : `Rp ${item.price}`) : 'Hubungi Penjual';
                     const specsText = item.specs || item.highlight || 'Produk Lokal Berkualitas';
+                    const producerName = item.producer || 'Mitra Binaan UKM';
+                    
+                    const stockBadge = item.stockStatus === 'preorder'
+                        ? `<span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1"><i class="fas fa-clock me-1"></i> Pre-Order Mitra</span>`
+                        : (item.stockStatus === 'limited'
+                            ? `<span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1"><i class="fas fa-exclamation-circle me-1"></i> Stok Terbatas</span>`
+                            : `<span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1"><i class="fas fa-check-circle me-1"></i> Ready di Gudang</span>`);
+
+                    const wholesaleTag = item.wholesale
+                        ? `<div class="product-wholesale-chip text-muted small mt-1"><i class="fas fa-boxes-stacked text-warning me-1"></i> <strong>Grosir:</strong> ${item.wholesale}</div>`
+                        : '';
 
                     // Card Element
                     const cardCol = document.createElement('div');
                     cardCol.className = 'col-lg-4 col-sm-6 portfolio-item';
                     cardCol.setAttribute('data-category', item.category);
-                    cardCol.setAttribute('data-keywords', `${item.name} ${specsText} ${item.categoryLabel || ''} ${priceText}`.toLowerCase());
+                    cardCol.setAttribute('data-keywords', `${item.name} ${specsText} ${producerName} ${item.categoryLabel || ''} ${priceText}`.toLowerCase());
 
                     cardCol.innerHTML = `
                         <div class="portfolio-link" data-bs-toggle="modal" href="#${modalId}">
@@ -1320,12 +1676,17 @@
                             <img class="img-fluid" src="${imgPath}" alt="${item.name}" onerror="this.src='assets/img/ukm/makanan-1.jpg'" />
                         </div>
                         <div class="portfolio-caption text-center p-4">
-                            <span class="cat-badge ${badgeClass}">${item.categoryLabel || item.category}</span>
-                            <div class="portfolio-caption-heading fw-bold fs-5">${item.name}</div>
+                            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+                                <span class="cat-badge ${badgeClass}">${item.categoryLabel || item.category}</span>
+                                ${stockBadge}
+                            </div>
+                            <div class="portfolio-caption-heading fw-bold fs-5 mb-1">${item.name}</div>
+                            <div class="product-producer-tag small text-muted mb-2"><i class="fas fa-industry text-warning me-1"></i> Produsen: <strong>${producerName}</strong></div>
                             <div><span class="product-price-tag">${priceText}</span></div>
-                            <div class="product-specs-chip"><i class="fas fa-tag me-1 text-muted"></i> ${specsText}</div>
-                            <button class="btn btn-warning btn-sm product-card-btn w-100" data-bs-toggle="modal" data-bs-target="#${modalId}">
-                                <i class="fas fa-eye me-1"></i> Detail & Pesan Produk
+                            ${wholesaleTag}
+                            <div class="product-specs-chip mt-2"><i class="fas fa-tag me-1 text-muted"></i> ${specsText}</div>
+                            <button class="btn btn-warning btn-sm product-card-btn w-100 mt-3" data-bs-toggle="modal" data-bs-target="#${modalId}">
+                                <i class="fas fa-eye me-1"></i> Detail & Pesan ke Admin UKM
                             </button>
                         </div>
                     `;
@@ -1340,7 +1701,7 @@
                     modalDiv.setAttribute('aria-hidden', 'true');
 
                     const cleanPhone = (item.phone || '6283850386401').replace(/\D/g, '');
-                    const waMessage = `Halo Admin UKM Entrepreneur, saya ingin membeli produk *${item.name}* (${priceText}) dari Katalog Produk. Apakah stok masih tersedia?`;
+                    const waMessage = `Halo Admin Distributor UKM, saya tertarik memesan *${item.name}* (Mitra Produsen: ${producerName}, Harga: ${priceText}). Mohon info ketersediaan stok di gudang dan prosedur pengiriman resmi.`;
                     const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(waMessage)}`;
 
                     modalDiv.innerHTML = `
@@ -1350,24 +1711,31 @@
                                 <div class="container p-4 p-md-5">
                                     <div class="row justify-content-center">
                                         <div class="col-lg-10 text-center">
-                                            <span class="cat-badge ${badgeClass} mb-2">${item.categoryLabel || item.category}</span>
-                                            <h2 class="text-uppercase fw-bold">${item.name}</h2>
-                                            <div class="product-modal-price-box mb-3">
-                                                <span class="price-label">Harga Produk</span>
-                                                <span class="price-val">${priceText}</span>
+                                            <div class="d-flex justify-content-center align-items-center gap-2 mb-2 flex-wrap">
+                                                <span class="cat-badge ${badgeClass}">${item.categoryLabel || item.category}</span>
+                                                ${stockBadge}
                                             </div>
-                                            <img class="img-fluid modal-ukm-img d-block mx-auto" src="${imgPath}" alt="${item.name}" onerror="this.src='assets/img/ukm/makanan-1.jpg'" />
+                                            <h2 class="text-uppercase fw-bold">${item.name}</h2>
+                                            <div class="text-muted mb-2"><i class="fas fa-industry text-warning me-1"></i> Ditampung dari Mitra Produsen: <strong>${producerName}</strong></div>
+                                            <div class="product-modal-price-box mb-3">
+                                                <span class="price-label">Harga Resmi Distributor</span>
+                                                <span class="price-val">${priceText}</span>
+                                                ${item.wholesale ? `<div class="small text-muted mt-1" style="font-size: 0.8rem;"><i class="fas fa-boxes-stacked text-warning me-1"></i> <strong>Harga Grosir/Partai:</strong> ${item.wholesale}</div>` : ''}
+                                            </div>
+                                            <img class="img-fluid modal-ukm-img d-block mx-auto mb-3" src="${imgPath}" alt="${item.name}" onerror="this.src='assets/img/ukm/makanan-1.jpg'" />
                                             <p class="text-start">${item.description || ''}</p>
-                                            <div class="ukm-spec-box">
+                                            <div class="ukm-spec-box text-start">
                                                 <ul class="list-unstyled mb-0">
+                                                    <li class="mb-2"><strong><i class="fas fa-industry me-2 text-warning"></i> Mitra Produsen:</strong> ${producerName}</li>
+                                                    <li class="mb-2"><strong><i class="fas fa-boxes-packing me-2 text-warning"></i> Status Pasokan:</strong> ${item.stockStatus === 'preorder' ? 'Pre-Order Mitra (3-7 Hari Kerja)' : 'Ready Stock di Gudang UKM'}</li>
                                                     <li class="mb-2"><strong><i class="fas fa-box-open me-2 text-warning"></i> Spesifikasi / Bahan:</strong> ${specsText}</li>
-                                                    <li class="mb-2"><strong><i class="fas fa-layer-group me-2 text-warning"></i> Kategori Sektor:</strong> ${item.categoryLabel || item.category}</li>
-                                                    <li class="mb-2"><strong><i class="fas fa-truck me-2 text-warning"></i> Layanan Kirim:</strong> Melayani pesanan & pengiriman ke seluruh Indonesia</li>
+                                                    <li class="mb-2"><strong><i class="fas fa-tags me-2 text-warning"></i> Opsi Pembelian:</strong> Melayani pesanan Eceran maupun Grosir/Reseller B2B</li>
+                                                    <li class="mb-2"><strong><i class="fas fa-truck-fast me-2 text-warning"></i> Layanan Pengiriman:</strong> Pengiriman resmi terpusat dari Gudang UKM ke seluruh Indonesia</li>
                                                 </ul>
                                             </div>
-                                            <div class="d-flex gap-2 justify-content-center flex-wrap mb-4">
+                                            <div class="d-flex gap-2 justify-content-center flex-wrap mb-4 mt-3">
                                                 <a href="${waUrl}" target="_blank" class="btn btn-whatsapp btn-lg">
-                                                    <i class="fab fa-whatsapp me-2"></i> Beli Produk via WhatsApp
+                                                    <i class="fab fa-whatsapp me-2"></i> Pesan via Admin Distributor
                                                 </a>
                                                 <button class="btn btn-primary btn-lg" data-bs-dismiss="modal" type="button">
                                                     <i class="fas fa-xmark me-1"></i> Tutup
@@ -1448,25 +1816,25 @@
         // 3. Dynamic News / Postingan dari CMS
         let allArticles = [
             {
-                title: "Peluang Ekspor Kerajinan Kulit Garut ke Pasar Eropa 2026",
+                title: "Kemitraan Distribusi: Membuka Pasar Nasional untuk Pengrajin Kulit Garut",
                 category: "Kerajinan Kulit, dsb.",
                 date: "14 Okt 2026",
-                snippet: "Tingginya permintaan produk kulit samak nabati ramah lingkungan membuka jalan bagi pengrajin lokal untuk menembus pasar ritel internasional.",
-                content: "Industri kerajinan kulit Sukaregang di Garut kembali mencuri perhatian pasar internasional. Dengan meningkatnya tren fesyen berkelanjutan (sustainable fashion), pembeli dari negara-negara Eropa seperti Jerman, Prancis, dan Belanda mulai mencari pemasok alternatif yang menggunakan proses penyamakan nabati (vegetable tanning). Keunggulan pengrajin Garut terletak pada kekuatan teknik jahitan tangan (saddle stitching) yang terbukti tahan puluhan tahun, serta fleksibilitas dalam memproduksi desain custom untuk pesanan berskala menengah."
+                snippet: "Bagaimana sistem distribusi terpadu membantu sentra kulit lokal meningkatkan volume penjualan grosir tanpa pusing memikirkan biaya pemasaran digital.",
+                content: "Industri kerajinan kulit Sukaregang di Garut kembali mencuri perhatian pasar nasional dan internasional. Melalui kemitraan dengan hub distributor UKM terpadu, para pengrajin kini dapat fokus pada kualitas jahitan tangan (saddle stitching) dan keaslian material samak nabati (vegetable tanned leather), sementara sistem pergudangan, sertifikasi mutu, dan jaringan pengiriman ke seluruh nusantara dikelola secara profesional melalui satu pintu layanan distributor."
             },
             {
-                title: "Pentingnya Standar Kemasan Food-Grade untuk Produk Makanan UMKM",
+                title: "Standar Kemasan & Kurasi Produk Pangan di Gudang Distribusi UKM",
                 category: "Makanan & Minuman",
                 date: "08 Okt 2026",
-                snippet: "Kemasan higienis dan bersertifikat Halal bukan sekadar formalitas, melainkan kunci meningkatkan kepercayaan konsumen digital.",
-                content: "Di era perdagangan elektronik modern, kemasan produk adalah 'wiraniaga diam' yang pertama kali berinteraksi dengan konsumen. Bagi pelaku UKM makanan dan minuman, beralih dari kemasan plastik tipis ke botol kaca kedap udara atau standing pouch foil food-grade bersertifikat Halal memberikan peningkatan konversi penjualan hingga 65%. Selain memperpanjang masa simpan secara alami tanpa pengawet berbahaya, tampilan visual yang profesional memudahkan produk lokal menembus jaringan supermarket modern dan ekspor regional."
+                snippet: "Semua olahan kuliner dari produsen mitra wajib lolos uji rasa, higienitas kemasan kedap udara food-grade, serta sertifikasi Halal resmi.",
+                content: "Di pusat distribusi UKM, setiap botol sambal kemasan, kopi biji sangrai, dan aneka camilan dari dapur mitra binaan melewati proses kontrol kualitas ketat sebelum didistribusikan. Penggunaan botol kaca kedap udara atau pouch food-grade bersertifikat Halal memberikan perlindungan kualitas rasa hingga 6 bulan tanpa bahan pengawet berbahaya, memastikan kepuasan konsumen saat produk tiba di tangan mereka."
             },
             {
-                title: "Inovasi IoT Lokal: Petani Muda Manfaatkan Sensor Otomatis",
+                title: "Inovasi IoT Lokal Masuk Jaringan Distribusi: Solusi Otomasi Petani",
                 category: "Elektronik",
                 date: "02 Okt 2026",
-                snippet: "Bagaimana teknologi mikrokontroler buatan wirausahawan muda mampu memangkas biaya penyiraman air hingga 40 persen.",
-                content: "Kolaborasi antara pemuda penggiat teknologi elektronika dan petani lokal di Jawa Barat menghasilkan terobosan baru dalam efisiensi agribisnis. Dengan memanfaatkan modul sensor mikrokontroler bertenaga surya, kelembaban tanah dan suhu udara di dalam greenhouse kini dapat dipantau secara nirkabel secara real-time. Sistem ini secara otomatis mengaktifkan katup penyiraman hanya saat tanaman benar-benar membutuhkan air, memangkas tagihan listrik pompa dan menghemat penggunaan air bersih hingga 40%."
+                snippet: "Modul smart relay karya perakit teknologi lokal kini didistribusikan secara resmi ke ratusan kelompok tani di berbagai daerah.",
+                content: "Kolaborasi antara laboratorium riset teknologi lokal dan jaringan distribusi UKM berhasil memperluas pemanfaatan mikrokontroler pintar bagi sektor agribisnis. Dengan harga grosir yang terjangkau dan ketersediaan unit yang selalu ready di gudang distribusi, para petani dapat mengimplementasikan sistem penyiraman otomatis berbasis sensor secara efisien dan hemat biaya listrik hingga 40%."
             }
         ];
 
@@ -1529,27 +1897,42 @@
 
         // 4. Integrasi Pengaturan Website Dinamis (CMS Settings)
         const DEFAULT_SITE_SETTINGS = {
-            brandName: "UKM ENTREPRENEUR",
+            brandName: "UKM ENTREPRENEUR DISTRIBUTOR",
             logoUrl: "assets/img/ui/logo-ukm.jpeg",
             logoStyle: "circle",
-            tagline: "Etalase Inovasi & Produk Usaha Mandiri",
-            headline: "KATALOG PRODUK UNGGULAN",
-            subheadline: "Menyediakan aneka produk lokal berkualitas di bidang Makanan/Minuman, Kerajinan Kulit, Elektronik, dan Jasa yang siap dikomersilkan ke seluruh nusantara.",
+            tagline: "Pusat Distribusi Terpadu Produk & Jasa Mitra Produsen Lokal",
+            headline: "DISTRIBUTOR RESMI PRODUK & JASA UNGGULAN",
+            subheadline: "Menampung, mengkurasi, dan menyalurkan ragam karya unggulan pengrajin, produsen pangan, teknolog, dan profesional lokal langsung ke konsumen & pelaku usaha dengan standar mutu terjamin.",
             phone: "6283850386401",
-            email: "kontak@ukm-entrepreneur.id",
-            address: "Jl. Riau No. 120, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115",
+            partnershipPhone: "6283850386401",
+            email: "distribusi@ukm-entrepreneur.id",
+            address: "Pusat Distribusi UKM, Jl. Riau No. 120, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115",
             hours: "Senin - Sabtu: 08.00 - 17.00 WIB",
             instagram: "https://instagram.com",
             facebook: "https://facebook.com",
             linkedin: "https://linkedin.com",
-            footerText: "2026 UKM Entrepreneur Indonesia. Template by Start Bootstrap (MIT License)."
+            footerText: "2026 UKM Entrepreneur Distributor Indonesia. Mitra Resmi Produsen Lokal."
         };
 
         function getActiveSettings() {
             const raw = localStorage.getItem('ukm_site_settings');
             if (raw) {
                 try {
-                    return { ...DEFAULT_SITE_SETTINGS, ...JSON.parse(raw) };
+                    const parsed = JSON.parse(raw);
+                    if (parsed.brandName === "UKM ENTREPRENEUR" || !parsed.partnershipPhone) {
+                        const upgraded = {
+                            ...DEFAULT_SITE_SETTINGS,
+                            ...parsed,
+                            brandName: "UKM ENTREPRENEUR DISTRIBUTOR",
+                            tagline: DEFAULT_SITE_SETTINGS.tagline,
+                            headline: DEFAULT_SITE_SETTINGS.headline,
+                            subheadline: DEFAULT_SITE_SETTINGS.subheadline,
+                            partnershipPhone: parsed.partnershipPhone || "6283850386401"
+                        };
+                        localStorage.setItem('ukm_site_settings', JSON.stringify(upgraded));
+                        return upgraded;
+                    }
+                    return { ...DEFAULT_SITE_SETTINGS, ...parsed };
                 } catch (e) {
                     return DEFAULT_SITE_SETTINGS;
                 }
@@ -1612,7 +1995,7 @@
             }
 
             // 1. Title Halaman & Brand Navbar
-            document.title = `${s.brandName} - Katalog Produk & Usaha Unggulan`;
+            document.title = `${s.brandName} - Pusat Distribusi Produk & Jasa Unggulan`;
             const brandEl = document.getElementById('siteBrandName');
             if (brandEl) brandEl.textContent = s.brandName;
 
@@ -1626,8 +2009,10 @@
             const subheadlineEl = document.getElementById('siteSubheadline');
             if (subheadlineEl) subheadlineEl.textContent = s.subheadline;
 
-            // 3. Kontak, Alamat, WhatsApp, & Jam Buka
+            // 3. Kontak, Alamat, WhatsApp Pemesanan & Kemitraan
             const cleanPhone = (s.phone || '6283850386401').replace(/\D/g, '');
+            const cleanPartPhone = (s.partnershipPhone || s.phone || '6283850386401').replace(/\D/g, '');
+
             const addressEl = document.getElementById('siteAddress');
             if (addressEl) addressEl.textContent = s.address;
 
@@ -1636,6 +2021,15 @@
 
             const phoneLinkEl = document.getElementById('sitePhoneLink');
             if (phoneLinkEl) phoneLinkEl.href = `https://wa.me/${cleanPhone}`;
+
+            const partPhoneDisplayEl = document.getElementById('sitePartnershipPhoneDisplay');
+            if (partPhoneDisplayEl) partPhoneDisplayEl.textContent = (s.partnershipPhone || s.phone).startsWith('+') ? (s.partnershipPhone || s.phone) : `+${cleanPartPhone}`;
+
+            const partPhoneLinkEl = document.getElementById('sitePartnershipPhoneLink');
+            if (partPhoneLinkEl) {
+                const partnerPretext = encodeURIComponent("Halo Tim Kemitraan UKM Distributor, saya produsen/pengrajin ingin mengajukan produk kami untuk didistribusikan.");
+                partPhoneLinkEl.href = `https://wa.me/${cleanPartPhone}?text=${partnerPretext}`;
+            }
 
             const emailEl = document.getElementById('siteEmail');
             if (emailEl) emailEl.textContent = s.email;
@@ -1664,21 +2058,29 @@
         loadSiteSettings();
         document.addEventListener('DOMContentLoaded', loadSiteSettings);
 
-        // Handler Konsultasi & Pemesanan Produk via WhatsApp
+        // Handler Konsultasi, Pemesanan & Kemitraan via WhatsApp
         function handleRegistrationSubmit(e) {
             e.preventDefault();
             const s = getActiveSettings();
+            const inquiry = document.getElementById('contactInquiryType')?.value || 'Pemesanan Eceran';
             const owner = document.getElementById('ownerName').value;
             const biz = document.getElementById('bizName').value;
             const cat = document.getElementById('bizCategory').value;
             const phone = document.getElementById('bizPhone').value;
             const desc = document.getElementById('bizDesc').value;
 
-            const bizInfo = biz ? `\n- Instansi / Perusahaan: ${biz}` : '';
-            const msg = `Halo Tim ${s.brandName}!\n\nSaya ingin berkonsultasi / melakukan pemesanan produk:\n- Nama: ${owner}${bizInfo}\n- Kategori Produk: ${cat}\n- No. WhatsApp: ${phone}\n- Kebutuhan / Catatan Produk: ${desc}`;
+            const bizInfo = biz ? `\n- Usaha / Instansi: ${biz}` : '';
+            let targetPhone = (s.phone || '6283850386401').replace(/\D/g, '');
+            let msg = '';
+
+            if (inquiry.includes('Kemitraan')) {
+                targetPhone = (s.partnershipPhone || s.phone || '6283850386401').replace(/\D/g, '');
+                msg = `Halo Tim Kemitraan Distributor ${s.brandName}!\n\nSaya tertarik mendaftarkan produk / jasa kami untuk didistribusikan secara resmi:\n- Nama Pemilik / Penanggungjawab: ${owner}${bizInfo}\n- Sektor Usaha: ${cat}\n- No. WhatsApp: ${phone}\n- Deskripsi & Rincian Produk: ${desc}\n\nMohon informasi prosedur pengiriman sampel dan kesepakatan pasokan. Terima kasih!`;
+            } else {
+                msg = `Halo Admin Distributor ${s.brandName}!\n\nSaya ingin memesan / berkonsultasi produk:\n- Keperluan: ${inquiry}\n- Nama Pemesan: ${owner}${bizInfo}\n- Sektor Usaha: ${cat}\n- No. WhatsApp: ${phone}\n- Rincian Pesanan / Kebutuhan: ${desc}\n\nMohon info ketersediaan stok di gudang dan perkiraan ongkos kirim. Terima kasih!`;
+            }
             
-            const cleanPhone = (s.phone || '6283850386401').replace(/\D/g, '');
-            const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(msg)}`;
+            const waUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(msg)}`;
             window.open(waUrl, '_blank');
             e.target.reset();
         }

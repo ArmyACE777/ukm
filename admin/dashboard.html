@@ -507,30 +507,41 @@
                                 <div class="admin-card-body p-4">
                                     <div class="row g-3 mb-3">
                                         <div class="col-md-6">
-                                            <label class="form-label small fw-bold text-muted"><i class="fab fa-whatsapp text-success me-1"></i> Nomor WhatsApp Utama *</label>
+                                            <label class="form-label small fw-bold text-muted"><i class="fab fa-whatsapp text-success me-1"></i> WhatsApp Admin Distribusi (Pesanan Konsumen) *</label>
                                             <div class="input-group">
                                                 <span class="input-group-text">+</span>
                                                 <input type="text" id="settingPhone" class="form-control" required placeholder="6283850386401" />
                                             </div>
-                                            <small class="text-muted">Nomor tujuan pesanan direct WhatsApp dari seluruh kartu katalog.</small>
+                                            <small class="text-muted">Nomor tujuan pesanan eceran & grosir dari seluruh kartu katalog web.</small>
                                         </div>
                                         <div class="col-md-6">
+                                            <label class="form-label small fw-bold text-muted"><i class="fas fa-handshake text-warning me-1"></i> WhatsApp Kemitraan Produsen (Pendaftaran Suplai) *</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">+</span>
+                                                <input type="text" id="settingPartnershipPhone" class="form-control" required placeholder="6283850386401" />
+                                            </div>
+                                            <small class="text-muted">Nomor tujuan konsultasi pengrajin/produsen yang ingin memasok produk/jasa.</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-6">
                                             <label class="form-label small fw-bold text-muted"><i class="fas fa-envelope text-primary me-1"></i> Alamat Email Resmi *</label>
-                                            <input type="email" id="settingEmail" class="form-control" required placeholder="kontak@ukm-entrepreneur.id" />
-                                            <small class="text-muted">Email untuk penerimaan pesan & penawaran kerjasama.</small>
+                                            <input type="email" id="settingEmail" class="form-control" required placeholder="distribusi@ukm-entrepreneur.id" />
+                                            <small class="text-muted">Email untuk penerimaan penawaran resmi & kerjasama bisnis.</small>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-bold text-muted"><i class="fas fa-clock text-warning me-1"></i> Jam Operasional Gudang & Layanan *</label>
+                                            <input type="text" id="settingHours" class="form-control" required placeholder="Senin - Sabtu: 08.00 - 17.00 WIB" />
+                                            <small class="text-muted">Jadwal operasional inventaris gudang dan customer support.</small>
                                         </div>
                                     </div>
 
                                     <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label small fw-bold text-muted"><i class="fas fa-clock text-warning me-1"></i> Jam Operasional *</label>
-                                            <input type="text" id="settingHours" class="form-control" required placeholder="Senin - Sabtu: 08.00 - 17.00 WIB" />
-                                            <small class="text-muted">Jadwal layanan pelanggan dan pengiriman pesanan.</small>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label small fw-bold text-muted"><i class="fas fa-map-marker-alt text-danger me-1"></i> Alamat Kantor / Gerai *</label>
-                                            <textarea id="settingAddress" class="form-control" rows="2" required placeholder="Jl. Riau No. 120, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115"></textarea>
-                                            <small class="text-muted">Alamat yang tertera pada kartu kontak di bagian bawah website.</small>
+                                        <div class="col-12">
+                                            <label class="form-label small fw-bold text-muted"><i class="fas fa-warehouse text-danger me-1"></i> Alamat Pusat Pergudangan & Distribusi UKM *</label>
+                                            <textarea id="settingAddress" class="form-control" rows="2" required placeholder="Pusat Distribusi UKM, Jl. Riau No. 120, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115"></textarea>
+                                            <small class="text-muted">Alamat fisik gudang pusat pengiriman yang tertera pada kartu kontak website.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -710,39 +721,69 @@
                                 <div class="modal-form-panel">
                                     <div class="mb-3">
                                         <label class="form-label fw-bold text-dark small mb-1">
-                                            Nama Produk Komersial <span class="text-danger">*</span>
+                                            Nama Produk / Jasa Komersial <span class="text-danger">*</span>
                                         </label>
                                         <input type="text" id="inputProductName" class="form-control form-control-modal" required placeholder="Contoh: Dompet Kulit Bifold Slim Handstitched" />
                                         <small class="text-muted" style="font-size: 0.72rem;">Judul utama produk yang dicari calon pembeli pada katalog web.</small>
                                     </div>
 
+                                    <!-- Baris: Mitra Produsen & Status Pasokan Gudang -->
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-sm-7">
+                                            <label class="form-label fw-bold text-dark small mb-1">
+                                                <i class="fas fa-industry text-warning me-1"></i> Mitra Produsen / Sentra Asal <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" id="inputProductProducer" class="form-control form-control-modal" required placeholder="Contoh: Sentra Kulit Sukaregang Garut (Mitra Binaan)" />
+                                            <small class="text-muted" style="font-size: 0.72rem;">Nama produsen, pengrajin, atau sentra binaan asal produk/jasa.</small>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <label class="form-label fw-bold text-dark small mb-1">
+                                                <i class="fas fa-boxes-packing text-warning me-1"></i> Status Pasokan <span class="text-danger">*</span>
+                                            </label>
+                                            <select id="inputProductStockStatus" class="form-select form-control-modal" required>
+                                                <option value="ready">🟢 Ready di Gudang UKM</option>
+                                                <option value="preorder">🟡 Pre-Order Mitra (3-7 Hari)</option>
+                                                <option value="limited">🟠 Pasokan Terbatas</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Baris: Sektor Usaha -->
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold text-dark small mb-1">
+                                            Sektor Usaha <span class="text-danger">*</span>
+                                        </label>
+                                        <select id="inputProductCategory" class="form-select form-control-modal" required onchange="updateModalCategoryBadge(this.value)">
+                                            <option value="" disabled selected>Pilih Sektor Usaha</option>
+                                            <option value="makanan">🍽️ Makanan & Minuman</option>
+                                            <option value="kulit">👜 Kerajinan Kulit, dsb.</option>
+                                            <option value="elektronik">💡 Elektronik & IoT</option>
+                                            <option value="jasa">💼 Jasa Profesional</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Baris: Harga Satuan & Harga Grosir B2B -->
                                     <div class="row g-3 mb-3">
                                         <div class="col-sm-6">
                                             <label class="form-label fw-bold text-dark small mb-1">
-                                                Sektor Usaha <span class="text-danger">*</span>
-                                            </label>
-                                            <select id="inputProductCategory" class="form-select form-control-modal" required onchange="updateModalCategoryBadge(this.value)">
-                                                <option value="" disabled selected>Pilih Sektor Usaha</option>
-                                                <option value="makanan">🍽️ Makanan & Minuman</option>
-                                                <option value="kulit">👜 Kerajinan Kulit, dsb.</option>
-                                                <option value="elektronik">💡 Elektronik & IoT</option>
-                                                <option value="jasa">💼 Jasa Profesional</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label fw-bold text-dark small mb-1">
-                                                Harga Satuan Resmi <span class="text-danger">*</span>
+                                                Harga Satuan Resmi (Eceran) <span class="text-danger">*</span>
                                             </label>
                                             <div class="input-group">
                                                 <span class="input-group-text bg-light fw-bold text-secondary">Rp</span>
                                                 <input type="text" id="inputProductPrice" class="form-control form-control-modal" required placeholder="85.000" />
                                             </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label fw-bold text-dark small mb-1">
+                                                <i class="fas fa-tags text-warning me-1"></i> Info Grosir / Reseller B2B (Opsi)
+                                            </label>
+                                            <input type="text" id="inputProductWholesale" class="form-control form-control-modal" placeholder="Contoh: Min. 10 pcs: Rp 70.000" />
+                                        </div>
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label fw-bold text-dark small mb-1">
-                                            Nomor WhatsApp Pemesanan Langsung <span class="text-danger">*</span>
+                                            Nomor WhatsApp Admin Distribusi (Satu Pintu) <span class="text-danger">*</span>
                                         </label>
                                         <div class="input-group">
                                             <span class="input-group-text bg-success-subtle text-success border-success-subtle fw-bold">
@@ -750,7 +791,7 @@
                                             </span>
                                             <input type="text" id="inputProductPhone" class="form-control form-control-modal" required placeholder="6283850386401" />
                                         </div>
-                                        <small class="text-muted" style="font-size: 0.72rem;">Gunakan format internasional tanpa spasi/tanda plus (contoh: 6283850386401).</small>
+                                        <small class="text-muted" style="font-size: 0.72rem;">Pemesanan konsumen akan diarahkan ke admin distributor resmi UKM ini.</small>
                                     </div>
 
                                     <div class="mb-3">
